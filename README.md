@@ -1,12 +1,17 @@
-# Astro Starter Kit: Basics
+# Astro Starter Theme: Enhanced
 
+This is a starter theme for Astro projects, pre-configured with Tailwind CSS and other useful tools to get you started quickly.
+
+## Getting started
+
+Clone this theme locally and run any of the following commands in your terminal:
 ```sh
-npm create astro@latest -- --template basics
+npm install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> 🎓 **Experienced?** Delete this file. Have fun!
 
-## 🚀 Project Structure
+## 🗥 Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
@@ -16,6 +21,8 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── favicon.svg
 ├── src
 │   ├── assets
+│   │   ├── images/
+│   │   ├── styles/
 │   │   └── astro.svg
 │   ├── components
 │   │   └── Welcome.astro
@@ -28,19 +35,26 @@ Inside of your Astro project, you'll see the following folders and files:
 
 To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
 
-## 🧞 Commands
+## ℹ️ Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Command                   | Action                                                   |
+| :------------------------ | :------------------------------------------------------- |
+| `npm install`             | Installs dependencies                                    |
+| `npm run dev`             | Starts local dev server at `localhost:4321`              |
+| `npm run build`           | Build your production site to `./dist/`                  |
+| `npm run preview`         | Preview your build locally, before deploying             |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check`         |
+| `npm run astro -- --help` | Get help using the Astro CLI                             |
+| `npm run format`          | Formats all files in the `src` directory using Prettier. |
+
 
 ## 👀 Want to learn more?
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### Astro
+You can view the [Astro](https://docs.astro.build) documentation or join the [Discord server](https://astro.build/chat).
+
+### Tailwind CSS
+
+Complete documentation for Tailwind CSS can be found at [tailwindcss.com](https://tailwindcss.com), and help, discussions about best practices, or feature ideas can be found at [Discuss Tailwind CSS on GitHub](https://github.com/tailwindcss/tailwindcss/discussions).
