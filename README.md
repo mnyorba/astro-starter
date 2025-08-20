@@ -26,6 +26,11 @@ Inside of your Astro project, you'll see the following folders and files:
 │   │   └── astro.svg
 │   ├── components
 │   │   └── Welcome.astro
+│   ├── content/
+│   │   └── post/
+│   │       ├── post-slug-1.md
+│   │       ├── post-slug-2.mdx
+│   │       └── ...
 │   ├── layouts
 │   │   └── Layout.astro
 │   └── pages
