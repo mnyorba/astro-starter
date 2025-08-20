@@ -10,9 +10,11 @@
     "format": "prettier ./src --write"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@tailwindcss/vite": "^4.1.12",
     "astro": "^5.13.2",
-    "tailwindcss": "^4.1.12"
+    "tailwindcss": "^4.1.12",
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
