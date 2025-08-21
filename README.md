@@ -33,8 +33,9 @@ Inside of your Astro project, you'll see the following folders and files:
 │   │       └── ...
 │   ├── layouts
 │   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
+│   ├── pages
+│   │   └── index.astro
+│   └── content.config.ts
 └── package.json
 ```
 
