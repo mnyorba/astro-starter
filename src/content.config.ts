@@ -6,8 +6,10 @@ import { glob } from "astro/loaders";
 
 // Define a schema for each collection.
 const blogCollection = defineCollection({
-  // loader: glob({ pattern: ["*.md", "*.mdx"], base: "src/data/blog" }),
-  loader: glob({ pattern: "**/[^_]*.md", base: "./src/data/blog" }),
+  loader: glob({
+    pattern: ["**/[^_]*.md", "**/[^_]*.mdx"],
+    base: "./src/data/blog",
+  }),
   schema: z.object({
     publishDate: z.date().default(new Date()), // e.g. 2019-12-01 00:00:00
     updateDate: z.date().optional(), // e.g. 2019-12-01 00:00:00
