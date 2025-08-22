@@ -24,8 +24,6 @@ const pageDescription = "A collection of articles on topics I'm interested in.";
         {
           posts.map((post) => (
             <li class="transform overflow-hidden rounded-lg bg-white shadow-md transition-transform duration-300 hover:scale-105">
-              {/* {console.log(post)} */}
-              {console.log(post.id)}
               <a href={`/blog/${post.id}/`}>
                 {post.data.image && (
                   <img
