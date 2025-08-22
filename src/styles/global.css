@@ -1,2 +1,37 @@
+/* Import tailwindcss and its plugins */
 @import "tailwindcss";
+/**
+ * Typographic plugin for tailwindcss.
+ *
+ * See https://tailwindcss-typography.vercel.app/
+ */
 @plugin "@tailwindcss/typography";
+
+/* Import daisyUI and its plugins.
+ * daisyUI is a collection of CSS class names a high-level abstraction of Tailwind CSS utility classes.
+ *
+ * See https://daisyui.com
+ */
+@plugin "daisyui";
+
+/* Set up daisyUI light themes 
+ *
+ * See https://daisyui.com/docs/themes 
+ */
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+}
+
+/* Set up daisyUI dark themes 
+ *
+ * See https://daisyui.com/docs/themes
+ */
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+}
