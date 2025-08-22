@@ -1,0 +1,59 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const posts = (
+  await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  })
+).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+const pageTitle = "Blog";
+const pageDescription = "A collection of articles on topics I'm interested in.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="container mx-auto px-4 py-8">
+    <section class="mb-12 text-center">
+      <h1 class="mb-2 text-4xl font-bold">{pageTitle}</h1>
+      <p class="text-lg text-gray-600">{pageDescription}</p>
+    </section>
+
+    <section>
+      <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          posts.map((post) => (
+            <li class="transform overflow-hidden rounded-lg bg-white shadow-md transition-transform duration-300 hover:scale-105">
+              {/* {console.log(post)} */}
+              {console.log(post.id)}
+              <a href={`/blog/${post.id}/`}>
+                {post.data.image && (
+                  <img
+                    class="h-48 w-full object-cover"
+                    src={post.data.image.src}
+                    alt={post.data.image.alt}
+                    width="720"
+                    height="360"
+                  />
+                )}
+                <div class="p-6">
+                  <h2 class="mb-2 text-2xl font-bold">{post.data.title}</h2>
+                  <p class="mb-4 text-gray-700">{post.data.description}</p>
+                  <p class="text-sm text-gray-500">
+                    <time datetime={post.data.publishDate.toISOString()}>
+                      {post.data.publishDate.toLocaleDateString("uk-UA", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </time>
+                  </p>
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+  </main>
+</Layout>
