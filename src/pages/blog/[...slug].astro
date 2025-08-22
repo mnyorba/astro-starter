@@ -1,0 +1,47 @@
+---
+import { getCollection, getEntry, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => {
+    return data.draft !== true;
+  });
+  return posts.map((post) => {
+    return {
+      params: { slug: post.id },
+      props: { post },
+    };
+  });
+}
+
+const { post } = Astro.props;
+// Check if post.data and post.data.author exist
+let author = { data: { name: "Unknown Author" } };
+if (post?.data?.author) {
+  // Get full author data by reference
+  const authorEntry = await getEntry(post.data.author);
+  if (authorEntry) author = authorEntry;
+}
+
+// const author = await getEntry(post.data.author);
+const { Content } = await render(post);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image?.src}
+  type="article"
+  publishDate={post.data.publishDate}
+  updateDate={post.data.updateDate}
+  author={author.data}
+>
+  <article>
+    <h1>{post.data.title}</h1>
+    <p>
+      By {author.data.name} on {post.data.publishDate.toLocaleDateString()}
+    </p>
+    <hr />
+    <Content />
+  </article>
+</Layout>
