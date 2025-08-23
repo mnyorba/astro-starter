@@ -1,14 +1,24 @@
 ---
 import "../styles/global.css";
 
-import { metadata, social } from "../consts";
+import { metadata, config, social } from "../consts";
 
 // This component can be used on any page
 const { title, description, image, type, publishDate, updateDate, author } =
   Astro.props;
 
 const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const siteImage = new URL(image || metadata.image, Astro.site).toString();
+
+// Add image path to site image.
+const imagePath = image || metadata.image;
+const siteImage = imagePath.startsWith("http")
+  ? imagePath
+  : new URL(
+      imagePath.startsWith("/")
+        ? `${config.base}${imagePath}`.replace(/\/+/, "/")
+        : `${config.base}/${imagePath}`,
+      Astro.site,
+    ).toString();
 
 const twitterHandle = social.twitter
   ? `@${social.twitter.split("/").pop()}`
@@ -45,12 +55,13 @@ const schema = {
 <meta name="keywords" content={metadata.keywords} />
 <meta name="author" content={metadata.author} />
 <meta name="robots" content={metadata.robots} />
+<base href={config.base.startsWith("/") ? config.base : `/${config.base}/`} />
 <link rel="canonical" href={pageUrl} />
 
 <!-- Favicon -->
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="icon" type="image/png" href="/favicon.png" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/svg+xml" href={`${config.base}/favicon.svg`} />
+<link rel="icon" type="image/png" href={`${config.base}/favicon.png`} />
+<link rel="apple-touch-icon" href={`${config.base}/apple-touch-icon.png`} />
 <meta name="theme-color" content="#ffffff" />
 
 <!-- Open Graph (Facebook, LinkedIn) -->
@@ -83,4 +94,12 @@ const schema = {
 <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
 
 <!-- Structured data (Schema.org) -->
-<script is:inline set:html type="application/ld+json" set:html={JSON.stringify(schema)} />
+<script
+  is:inline
+  set:html
+  type="application/ld+json"
+  set:html={JSON.stringify(schema)}
+/>
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
