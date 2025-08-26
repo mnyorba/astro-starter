@@ -11,12 +11,16 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site).toString();
 
 // Add image path to site image.
 const imagePath = image || metadata.image;
+const siteBase = config.base.endsWith("/")
+  ? config.base.slice(0, -1)
+  : config.base;
+console.log(siteBase);
 const siteImage = imagePath.startsWith("http")
   ? imagePath
   : new URL(
       imagePath.startsWith("/")
-        ? `${config.base}${imagePath}`.replace(/\/+/, "/")
-        : `${config.base}/${imagePath}`,
+        ? `${siteBase}${imagePath}`.replace(/\/+/, "/")
+        : `${siteBase}/${imagePath}`,
       Astro.site,
     ).toString();
 
@@ -55,7 +59,7 @@ const schema = {
 <meta name="keywords" content={metadata.keywords} />
 <meta name="author" content={metadata.author} />
 <meta name="robots" content={metadata.robots} />
-<base href={config.base.startsWith("/") ? config.base : `/${config.base}/`} />
+<base href={config.base} />
 <link rel="canonical" href={pageUrl} />
 
 <!-- Favicon -->
