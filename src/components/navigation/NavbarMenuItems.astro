@@ -1,0 +1,17 @@
+---
+import { config } from "../../consts";
+// import { Menu }
+---
+
+<li><a href={`${config.base}`}>Home</a></li>
+<li><a href={`${config.base}blog/`}>Blog</a></li>
+<li>
+  <details>
+    <summary>Parent</summary>
+    <ul class="bg-base-100 rounded-t-none p-2">
+      <li class="w-max"><a>Submenu 1</a></li>
+      <li class="w-max"><a>Submenu 2</a></li>
+    </ul>
+  </details>
+</li>
+<li><a href={`${config.base}contact/`}>Contact</a></li>
