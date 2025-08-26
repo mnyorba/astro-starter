@@ -15,8 +15,8 @@ export const metadata = {
 
 // Site configuration
 export const config = {
-  url: "https://example.com", // Your site's deploy URL. It must start with `https://` or `http://`.
-  base: "", // The base path of your site in your deploy URL. e.g. "/blog/".
+  url: "https://mnyorba.github.io/", // Your site's deploy URL. It must start with `https://` or `http://`.
+  base: "/astro-starter/", // The base path of your site in your deploy URL. e.g. "/blog/".
   postsPerPage: 10, // Number of posts per page.
 };
 
