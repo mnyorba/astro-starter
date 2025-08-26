@@ -16,14 +16,14 @@ const pageDescription = "A collection of articles on topics I'm interested in.";
   <main class="container mx-auto px-4 py-8">
     <section class="mb-12 text-center">
       <h1 class="mb-2 text-4xl font-bold">{pageTitle}</h1>
-      <p class="text-lg text-gray-600">{pageDescription}</p>
+      <p class="text-lg font-semibold">{pageDescription}</p>
     </section>
 
     <section>
       <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {
           posts.map((post) => (
-            <li class="transform overflow-hidden rounded-lg bg-white shadow-md transition-transform duration-300 hover:scale-105">
+            <li class="transform overflow-hidden shadow-md transition-transform duration-300 hover:scale-105">
               <a href={`/blog/${post.id}/`}>
                 {post.data.image && (
                   <img
@@ -36,8 +36,8 @@ const pageDescription = "A collection of articles on topics I'm interested in.";
                 )}
                 <div class="p-6">
                   <h2 class="mb-2 text-2xl font-bold">{post.data.title}</h2>
-                  <p class="mb-4 text-gray-700">{post.data.description}</p>
-                  <p class="text-sm text-gray-500">
+                  <p class="mb-4">{post.data.description}</p>
+                  <p class="text-sm opacity-60">
                     <time datetime={post.data.publishDate.toISOString()}>
                       {post.data.publishDate.toLocaleDateString("uk-UA", {
                         year: "numeric",
