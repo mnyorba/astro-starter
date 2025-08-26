@@ -1,10 +1,14 @@
 import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
-import { metadata } from "../consts";
+import { metadata, config } from "../consts";
 
-export function GET(context) {
+export async function GET(context) {
   // Get all posts from the "blog" collection
-  const blog = getCollection("blog");
+  const posts = (
+    await getCollection("blog", ({ data }) => {
+      return data.draft !== true;
+    })
+  ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
   return rss({
     // `<title>` field in output xml
     title: metadata.title,
@@ -15,11 +19,11 @@ export function GET(context) {
     site: context.site,
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
-    items: blog.map((post) => ({
+    items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.publishDate,
       description: post.data.description,
-      link: `/blog/${post.id}`,
+      link: `${config.base}blog/${post.id}/`,
     })),
     // (optional) inject custom xml
     customData: `<language>en-us</language>`,
