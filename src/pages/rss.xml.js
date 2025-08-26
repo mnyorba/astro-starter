@@ -1,7 +1,10 @@
 import rss from "@astrojs/rss";
+import { getCollection } from "astro:content";
 import { metadata } from "../consts";
 
 export function GET(context) {
+  // Get all posts from the "blog" collection
+  const blog = getCollection("blog");
   return rss({
     // `<title>` field in output xml
     title: metadata.title,
