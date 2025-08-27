@@ -1,71 +1,88 @@
 # Astro Starter Theme: Enhanced
 
-This is a starter theme for Astro projects, pre-configured with Tailwind CSS and other useful tools to get you started quickly.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Made with Astro](https://img.shields.io/badge/Made%20with-Astro-blueviolet?logo=astro)](https://astro.build)
+[![Styled with Tailwind CSS](https://img.shields.io/badge/Styled%20with-Tailwind%20CSS-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
 
-## Getting started
+A feature-rich starter theme for Astro, designed for simplicity, best practices, and high performance. Pre-configured with Tailwind CSS, MDX, and several other quality-of-life tools to get you started quickly.
 
-Clone this theme locally and run any of the following commands in your terminal:
-```sh
-npm install
-```
+**Live Demo:** [https://mnyorba.github.io/astro-starter/](https://mnyorba.github.io/astro-starter/)
 
-> 🎓 **Experienced?** Delete this file. Have fun!
+---
 
-## 🗥 Project Structure
+## Features
 
-Inside of your Astro project, you'll see the following folders and files:
+-   **Astro 5.0**: The latest version of the powerful web framework.
+-   **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
+-   **Dark/Light Mode**: Theme toggle for user preference.
+-   **MDX & Markdown Support**: Write content in either `.md` or `.mdx`.
+-   **Content Collections**: Type-safe and organized content for your blog.
+-   **Automatic Sitemap**: `@astrojs/sitemap` is configured to generate a sitemap on build.
+-   **Custom Base URL Handling**: A custom remark plugin ensures that all asset paths work correctly, even when deploying to a subfolder.
+-   **Prettier**: Code formatter is set up with plugins for Astro and Tailwind CSS for consistent code style.
+-   **GitHub Actions CI/CD**: A pre-configured workflow to build and deploy your site to GitHub Pages.
 
-```text
-/
-├── public/
-│   │   ├── images/
-│   │   │   └── blog/
-│   │   │   └── ...
-│   │   ├── script/
-│   │   └── styles/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   ├── images/
-│   │   ├── styles/
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── content/
-│   │   └── post/
-│   │       ├── post-slug-1.md
-│   │       ├── post-slug-2.mdx
-│   │       └── ...
-│   ├── layouts
-│   │   └── Layout.astro
-│   ├── pages
-│   │   └── index.astro
-│   └── content.config.ts
-└── package.json
-```
+## 🚀 Getting Started
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+1.  **Create a new project from the template**:
+    ```sh
+    npm create astro@latest -- --template mnyorba/astro-starter
+    ```
 
-## ℹ️ Commands
+2.  **Install dependencies**:
+    ```sh
+    cd your-new-project
+    npm install
+    ```
+
+3.  **Start the development server**:
+    ```sh
+    npm run dev
+    ```
+    Your site will be available at `http://localhost:4321`.
+
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                                   |
-| :------------------------ | :------------------------------------------------------- |
-| `npm install`             | Installs dependencies                                    |
-| `npm run dev`             | Starts local dev server at `localhost:4321`              |
-| `npm run build`           | Build your production site to `./dist/`                  |
-| `npm run preview`         | Preview your build locally, before deploying             |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check`         |
-| `npm run astro -- --help` | Get help using the Astro CLI                             |
-| `npm run format`          | Formats all files in the `src` directory using Prettier. |
+| Command         | Action                                          |
+| :-------------- | :---------------------------------------------- |
+| `npm install`   | Installs dependencies                           |
+| `npm run dev`   | Starts local dev server at `localhost:4321`     |
+| `npm run build` | Build your production site to `./dist/`         |
+| `npm run preview` | Preview your build locally, before deploying    |
+| `npm run format`  | Formats all files in `src` using Prettier.      |
+| `npm run astro ...` | Run CLI commands like `astro add`, `astro check` |
 
+## 🗂️ Project Structure
 
-## 👀 Want to learn more?
+Here is an overview of the project structure:
 
-### Astro
-You can view the [Astro](https://docs.astro.build) documentation or join the [Discord server](https://astro.build/chat).
+```text
+/
+├── public/                     # Static assets (images, fonts, etc.)
+├── src/
+│   ├── assets/                 # Project-specific assets (like CSS, SVGs)
+│   ├── components/             # Reusable Astro components
+│   ├── consts.ts               # Global constants and site configuration
+│   ├── data/                   # Content collections (e.g., blog posts)
+│   ├── layouts/                # Base layouts for pages
+│   ├── pages/                  # Astro pages and API endpoints
+│   └── styles/                 # Global styles
+├── .github/
+│   └── workflows/
+│       └── astro.yml           # GitHub Actions workflow for deployment
+├── astro.config.mjs            # Astro configuration file
+├── package.json                # Project dependencies and scripts
+└── tsconfig.json               # TypeScript configuration
+```
 
-### Tailwind CSS
+## 🚀 Deployment
 
-Complete documentation for Tailwind CSS can be found at [tailwindcss.com](https://tailwindcss.com), and help, discussions about best practices, or feature ideas can be found at [Discuss Tailwind CSS on GitHub](https://github.com/tailwindcss/tailwindcss/discussions).
+This starter theme comes with a pre-configured GitHub Actions workflow to automatically build and deploy your site to GitHub Pages.
+
+The workflow is set to run manually. You can trigger it from the "Actions" tab in your GitHub repository.
+
+## 📄 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
