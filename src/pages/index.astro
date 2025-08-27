@@ -1,7 +1,8 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Welcome from "../components/Welcome.astro";
 
-const title = "Welcome to Astro!";
+const title = "Welcome to Astro Theme!";
 const description =
   'Wondering what to do next? Check out the Astro documentation at <a href="https://docs.astro.build">https://docs.astro.build</a>';
 
@@ -9,7 +10,6 @@ const description =
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-  <h1>{title}</h1>
-  <p set:html={description} />
+<Layout title={title} description={description}>
+  <Welcome title={title} />
 </Layout>
