@@ -9,6 +9,8 @@ export async function GET(context) {
       return data.draft !== true;
     })
   ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
+
+  // Return the RSS feed
   return rss({
     // `<title>` field in output xml
     title: metadata.title,
@@ -16,14 +18,14 @@ export async function GET(context) {
     description: metadata.description,
     // Pull in your project "site" from the endpoint context
     // https://docs.astro.build/en/reference/api-reference/#site
-    site: context.site,
+    site: new URL(config.base, context.site),
     // Array of `<item>`s in output xml
     // See "Generating items" section for examples using content collections and glob imports
     items: posts.map((post) => ({
       title: post.data.title,
       pubDate: post.data.publishDate,
       description: post.data.description,
-      link: `${config.base}blog/${post.id}/`,
+      link: `${config.base}/blog/${post.id}/`,
     })),
     // (optional) inject custom xml
     customData: `<language>en-us</language>`,
