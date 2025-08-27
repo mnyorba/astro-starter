@@ -44,10 +44,17 @@
     const checkbox = /** @type {HTMLInputElement | null} */ (
       document.getElementById("themeToggle") as HTMLInputElement | null
     );
+    const metaThemeColor = document.getElementById(
+      "theme-color-meta",
+    ) as HTMLMetaElement | null;
     const savedTheme = localStorage.getItem("theme") || "light";
 
     html.setAttribute("data-theme", savedTheme);
     if (checkbox) checkbox.checked = savedTheme === "dark";
+
+    if (metaThemeColor) {
+      metaThemeColor.content = savedTheme === "dark" ? "#000000" : "#ffffff";
+    }
 
     checkbox?.addEventListener("change", (e) => {
       const target = e.target;
@@ -56,6 +63,9 @@
       const newTheme = target.checked ? "dark" : "light";
       html.setAttribute("data-theme", newTheme);
       localStorage.setItem("theme", newTheme);
+      if (metaThemeColor) {
+        metaThemeColor.content = newTheme === "dark" ? "#000000" : "#ffffff";
+      }
     });
   });
 </script>
