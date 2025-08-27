@@ -39,7 +39,11 @@ const { Content } = await render(post);
 >
   <article>
     <h1>{post.data.title}</h1>
-    <img src={`${config.base}${post.data.image?.src}`} alt={`${post.data.image?.alt} || ${post.data.title}`} class="w-lg" />
+    <img
+      src={`${config.base}${post.data.image?.src}`}
+      alt={`${post.data.image?.alt} || ${post.data.title}`}
+      class="w-lg"
+    />
     <p>
       By {author.data.name} on {post.data.publishDate.toLocaleDateString()}
     </p>
