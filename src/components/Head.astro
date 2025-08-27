@@ -14,7 +14,6 @@ const imagePath = image || metadata.image;
 const siteBase = config.base.endsWith("/")
   ? config.base.slice(0, -1)
   : config.base;
-console.log(siteBase);
 const siteImage = imagePath.startsWith("http")
   ? imagePath
   : new URL(

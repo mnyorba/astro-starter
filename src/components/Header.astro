@@ -7,7 +7,6 @@ import { config } from "../consts";
 const isHome =
   Astro.url.pathname === config.base ||
   Astro.url.pathname === `${config.base}/`;
-console.log(isHome);
 ---
 
 <div class="bg-base-100 shadow-sm">
