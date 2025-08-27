@@ -1,6 +1,7 @@
 ---
 import { getCollection, getEntry, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import { config } from "../../consts";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => {
@@ -38,6 +39,7 @@ const { Content } = await render(post);
 >
   <article>
     <h1>{post.data.title}</h1>
+    <img src={`${config.base}${post.data.image?.src}`} alt={`${post.data.image?.alt} || ${post.data.title}`} class="w-lg" />
     <p>
       By {author.data.name} on {post.data.publishDate.toLocaleDateString()}
     </p>

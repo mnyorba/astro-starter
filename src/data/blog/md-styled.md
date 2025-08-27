@@ -52,7 +52,9 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ### Output
 
-<!-- ![blog placeholder](../images/blog/image-blog-5.jpg) -->
+<img src="./images/blog/image-blog-5.jpg" alt="blog placeholder" class=" w-2xl">
+
+![blog placeholder](./images/blog/image-blog-5.jpg)
 
 ## Blockquotes
 
