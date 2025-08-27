@@ -23,9 +23,9 @@ const title = Astro.props.title || "Welcome to Astro!";
           height="48"
           alt="Astro Homepage"
         />
-        <h1>{title}</h1>
+        <h1 class="text-2xl md:text-4xl">{title}</h1>
       </a>
-      <h2 class="text-lg">
+      <h2 class="text-base/8 md:text-lg/10">
         To get started, open the
         <pre class="inline w-fit">src/pages</pre>
         directory in your project.
@@ -49,11 +49,15 @@ const title = Astro.props.title || "Welcome to Astro!";
     </section>
   </div>
 
-  <a href="https://astro.build/blog/astro-5/" id="news" class="box">
+  <a
+    href="https://astro.build/blog/astro-5/"
+    id="news"
+    class="box text-base-content"
+  >
     <svg width="32" height="32" fill="none" xmlns="http://www.w3.org/2000/svg"
       ><path
         d="M24.667 12c1.333 1.414 2 3.192 2 5.334 0 4.62-4.934 5.7-7.334 12C18.444 28.567 18 27.456 18 26c0-4.642 6.667-7.053 6.667-14Zm-5.334-5.333c1.6 1.65 2.4 3.43 2.4 5.333 0 6.602-8.06 7.59-6.4 17.334C13.111 27.787 12 25.564 12 22.666c0-4.434 7.333-8 7.333-16Zm-6-5.333C15.111 3.555 16 5.556 16 7.333c0 8.333-11.333 10.962-5.333 22-3.488-.774-6-4-6-8 0-8.667 8.666-10 8.666-20Z"
-        fill="#111827"></path></svg
+        fill="currentColor"></path></svg
     >
     <h2>What's New in Astro 5.0?</h2>
     <p>
@@ -74,21 +78,14 @@ const title = Astro.props.title || "Welcome to Astro!";
     filter: blur(100px);
   }
 
-  code {
+  /* code {
     display: inline-block;
-    /* background:
-      linear-gradient(66.77deg, #f3cddd 0%, #f5cee7 100%) padding-box,
-      linear-gradient(155deg, #d83333 0%, #f041ff 18%, #f5cee7 45%) border-box;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    padding: 6px 8px; */
-  }
+  } */
 
   .box {
     padding: 16px;
-    background: rgba(255, 255, 255, 1);
     border-radius: 16px;
-    border: 1px solid white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
   #news {
@@ -97,12 +94,15 @@ const title = Astro.props.title || "Welcome to Astro!";
     right: 16px;
     max-width: 300px;
     text-decoration: none;
-    transition: background 0.2s;
+    transition:
+      background 0.2s,
+      scale 0.4s ease-in-out;
     backdrop-filter: blur(50px);
   }
 
   #news:hover {
-    background: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.01);
   }
 
   @media screen and (max-height: 368px) {
