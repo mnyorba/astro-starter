@@ -13,26 +13,32 @@ export default function remarkBaseUrl(options) {
   return (tree) => {
     const baseUrl = (options && options.baseUrl) || '/';
 
-    visit(tree, 'image', (node) => {
+    const processUrl = (url) => {
       if (
-        node.url &&
-        !node.url.startsWith('http') &&
-        !node.url.startsWith('/') &&
-        !node.url.startsWith(baseUrl)
+        url &&
+        !url.startsWith('http') &&
+        !url.startsWith('/') &&
+        !url.startsWith('#') &&
+        !url.startsWith(baseUrl)
       ) {
-        node.url = baseUrl.replace(/\/$/, '') + '/' + node.url.replace(/^\.\//, '');
+        return `${baseUrl.replace(/\/$/, '')}/${url.replace(/^\.\//, '')}`;
       }
+      return url;
+    };
+
+    visit(tree, ['image', 'link'], (node) => {
+      node.url = processUrl(node.url);
     });
 
-    visit(tree, 'link', (node) => {
-      if (
-        node.url &&
-        !node.url.startsWith('http') &&
-        !node.url.startsWith('/') &&
-        !node.url.startsWith(baseUrl)
-      ) {
-        node.url = baseUrl.replace(/\/$/, '') + '/' + node.url.replace(/^\.\//, '');
-      }
+    visit(tree, 'html', (node) => {
+      const urlRegex = /(src|href)=["']([^"']+)["']/g;
+      node.value = node.value.replace(urlRegex, (match, attr, url) => {
+        const newUrl = processUrl(url);
+        if (newUrl !== url) {
+          return `${attr}="${newUrl}"`;
+        }
+        return match;
+      });
     });
   };
 }
