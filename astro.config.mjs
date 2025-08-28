@@ -22,10 +22,5 @@ export default defineConfig({
     remarkPlugins: [
       [remarkBaseUrl, { baseUrl: config.base }],
     ],
-    syntaxHighlight: 'shiki',
-    shikiConfig: {
-      theme: 'dracula',
-      wrap: true,
-    },
   },
 });
