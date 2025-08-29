@@ -35,3 +35,65 @@
   prefersdark: true;
   color-scheme: dark;
 }
+
+/* Add your custom CSS styles here.
+ *
+ * This block is used to define CSS classes or styles that are not yet available in the daisyUI library.
+ * You can define your own CSS classes here and then use them in your HTML components.
+ */
+
+/* CSS transitions to animate elements when they become visible
+ *
+ * The approach is to apply the styles when the "is-visible" class is added to the element.
+ * When the element is visible and the class is added, the transition is triggered.
+ *
+ * See https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions
+ */
+
+.animate-fade-up {
+  @apply opacity-0;
+  @apply translate-y-8;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+}
+
+.animate-fade-up.is-visible {
+  @apply opacity-100;
+  @apply translate-y-0;
+}
+
+.animate-fade-right {
+  @apply opacity-0;
+  @apply translate-x-8;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+}
+
+.animate-fade-right.is-visible {
+  @apply opacity-100;
+  @apply translate-x-0;
+}
+
+.animate-fade-left {
+  @apply opacity-0;
+  @apply -translate-x-8;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+}
+
+.animate-fade-left.is-visible {
+  @apply opacity-100;
+  @apply translate-x-0;
+}
+
+.animate-fade-down {
+  @apply opacity-0;
+  @apply -translate-y-8;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+}
+
+.animate-fade-down.is-visible {
+  @apply opacity-100;
+  @apply translate-y-0;
+}

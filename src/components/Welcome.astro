@@ -15,7 +15,7 @@ const title = Astro.props.title || "Welcome to Astro!";
   <img id="background" src={background.src} alt="" fetchpriority="high" />
   <div>
     <section id="hero">
-      <a href="https://astro.build" class="flex items-center"
+      <a href="https://astro.build" class="animate-fade-down flex items-center"
         ><img
           src={astroLogo.src}
           class="!my-0"
@@ -25,12 +25,12 @@ const title = Astro.props.title || "Welcome to Astro!";
         />
         <h1 class="text-2xl md:text-4xl">{title}</h1>
       </a>
-      <h2 class="text-base/8 md:text-lg/10">
+      <h2 class="animate-fade-up text-base/8 md:text-lg/10">
         To get started, open the
         <pre class="inline w-fit">src/pages</pre>
         directory in your project.
       </h2>
-      <section id="links" class="mt-4">
+      <section id="links" class="animate-fade-up mt-4">
         <a class="btn btn-outline btn-secondary" href="https://docs.astro.build"
           >Read our docs</a
         >
