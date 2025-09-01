@@ -1,0 +1,90 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import ContactValue from "../components/common/ContactValue.astro";
+import { default as contacts } from "../data/contacts.json";
+
+const title = "Contacts";
+const description =
+  "Get in touch through any preferred method. I'm always open to new opportunities and collaborative projects.";
+
+const sections = {
+  general: "General Information",
+  social: "Social Media",
+  location: "Location",
+};
+---
+
+<Layout title={title} description={description}>
+  <section class="animate-fade-down">
+    <header class="mb-8 text-center">
+      <h1>{title}</h1>
+      <p class="text-lg font-semibold">{description}</p>
+    </header>
+    <div class="grid-cols-(repeat(auto-fill, minmax(10rem, 1fr)) grid">
+      <!-- Each contact item will be generated below -->
+      {
+        contacts.map((contact, index) => (
+          <div
+            id={index.toString()}
+            class="max-w-8xl mx-auto grid grid-cols-1 gap-6 md:grid-cols-3"
+          >
+            {/* {Object.keys(contact).map((sectionKey) => ( */}
+            {Object.entries(contact).map(([sectionKey, sectionData]) => (
+              <div
+                id={sectionKey}
+                class="card p-4 shadow-lg ring-1 ring-black/5"
+              >
+                <div class="card-body">
+                  <div class="card-title flex flex-col">
+                    <h2 class="mt-4 mb-1 capitalize">
+                      {sections[sectionKey as keyof typeof sections]}
+                    </h2>
+                    <div class="divider" />
+                  </div>
+                  {Object.entries(sectionData).map(([key, value]) => {
+                    let data;
+                    let displayText;
+
+                    if (Array.isArray(value)) {
+                      data = value[0];
+                      displayText = value[1];
+                    } else if (typeof value === "string") {
+                      data = value;
+                      displayText = null;
+                    }
+
+                    return (
+                      <div id={key}>
+                        {/* <strong>{key}:</strong>{" "} */}
+                        {data && (
+                          <ContactValue
+                            data={data}
+                            displayText={displayText}
+                            classes="opacity-80 no-underline hover:underline"
+                            externalLink={true}
+                          />
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        ))
+      }
+      <hr />
+    </div>
+  </section>
+  <div>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2482.4248528798125!2d-0.16113062337891101!3d51.523766971817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sua!4v1756731107898!5m2!1sru!2sua"
+      width="100%"
+      height="350"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+</Layout>

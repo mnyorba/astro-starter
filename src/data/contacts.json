@@ -1,0 +1,23 @@
+[
+  {
+    "general": {
+      "fullName": ["John Doe", ""],
+      "webSite": ["https://johndoe-site.com", "webSite"],
+      "email": ["john-doe@gmail.com", "john-doe@gmail.com"],
+      "phone": ["+38 (098) 123-45-67", "+38 (098) 123-45-67"]
+    },
+    "social": {
+      "telegram": ["https://t.me/john", "@t.me/john"],
+      "github": ["https://github.com/john-doe", "github"],
+      "linkedin": [
+        "https://www.linkedin.com/in/john-doe-2b4a791b1/",
+        "linkedin"
+      ]
+    },
+    "location": {
+      "street": "Baker Street 221B/3",
+      "city": "London, NW1 6XE",
+      "country": "United Kingdom"
+    }
+  }
+]
