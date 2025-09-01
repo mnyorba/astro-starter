@@ -9,50 +9,48 @@ const posts = (
   })
 ).sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf());
 
-const pageTitle = "Blog";
-const pageDescription = "A collection of articles on topics I'm interested in.";
+const title = "Blog";
+const description = "A collection of articles on topics I'm interested in.";
 ---
 
-<Layout title={pageTitle} description={pageDescription}>
-  <main class="container mx-auto px-4 py-8">
-    <section class="animate-fade-down mb-12 text-center">
-      <h1 class="mb-2 text-4xl font-bold">{pageTitle}</h1>
-      <p class="text-lg font-semibold">{pageDescription}</p>
-    </section>
+<Layout title={title} description={description}>
+  <section class="animate-fade-down text-center">
+    <header>
+      <h1>{title}</h1>
+      <p class="text-lg font-semibold">{description}</p>
+    </header>
 
-    <section>
-      <ul class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {
-          posts.map((post) => (
-            <li class="animate-fade-up overflow-hidden shadow-md">
-              <a href={`${config.base}/blog/${post.id}/`}>
-                {post.data.image && (
-                  <img
-                    class="h-48 w-full object-cover"
-                    src={`${config.base}${post.data.image.src}`}
-                    alt={post.data.image.alt}
-                    width="720"
-                    height="360"
-                  />
-                )}
-                <div class="p-6">
-                  <h2 class="mb-2 text-2xl font-bold">{post.data.title}</h2>
-                  <p class="mb-4">{post.data.description}</p>
-                  <p class="text-sm opacity-60">
-                    <time datetime={post.data.publishDate.toISOString()}>
-                      {post.data.publishDate.toLocaleDateString("uk-UA", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </time>
-                  </p>
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
-  </main>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      {
+        posts.map((post) => (
+          <div class="animate-fade-up overflow-hidden shadow-md">
+            <a href={`${config.base}/blog/${post.id}/`}>
+              {post.data.image && (
+                <img
+                  class="h-48 w-full object-cover"
+                  src={`${config.base}${post.data.image.src}`}
+                  alt={post.data.image.alt}
+                  width="720"
+                  height="360"
+                />
+              )}
+              <div class="p-6">
+                <h2 class="mb-2 text-2xl font-bold">{post.data.title}</h2>
+                <p class="mb-4">{post.data.description}</p>
+                <p class="text-sm opacity-60">
+                  <time datetime={post.data.publishDate.toISOString()}>
+                    {post.data.publishDate.toLocaleDateString("uk-UA", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                  </time>
+                </p>
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </section>
 </Layout>
