@@ -23,7 +23,7 @@ const description = "A collection of articles on topics I'm interested in.";
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
         posts.map((post) => (
-          <div class="animate-fade-up overflow-hidden shadow-md">
+          <article class="animate-fade-up overflow-hidden shadow-md">
             <a href={`${config.base}/blog/${post.id}/`}>
               {post.data.image && (
                 <img
@@ -48,7 +48,7 @@ const description = "A collection of articles on topics I'm interested in.";
                 </p>
               </div>
             </a>
-          </div>
+          </article>
         ))
       }
     </div>
