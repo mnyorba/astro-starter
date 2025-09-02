@@ -1,5 +1,9 @@
 # Astro Starter Theme: Enhanced
 
+[![Open in CodeSandbox](https://img.shields.io/badge/Open%20in-CodeSandbox-blue?logo=codesandbox)](https://codesandbox.io/s/github/mnyorba/astro-starter)
+[![Open in Gitpod](https://img.shields.io/badge/Open%20in-Gitpod-blue?logo=gitpod)](https://gitpod.io/#https://github.com/mnyorba/astro-starter)
+[![Open in StackBlitz](https://img.shields.io/badge/Open%20in-StackBlitz-blue?logo=stackblitz)](https://stackblitz.com/github/mnyorba/astro-starter)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Made with Astro](https://img.shields.io/badge/Made%20with-Astro-blueviolet?logo=astro)](https://astro.build)
 [![Styled with Tailwind CSS](https://img.shields.io/badge/Styled%20with-Tailwind%20CSS-38B2AC?logo=tailwind-css)](https://tailwindcss.com)
@@ -77,11 +81,56 @@ Here is an overview of the project structure:
 └── tsconfig.json               # TypeScript configuration
 ```
 
+## ⚙️ Configuration
+
+All site-wide configuration is managed in `src/consts.ts`.
+
+### Metadata
+
+The `metadata` object contains all the SEO and general site information.
+
+```typescript
+export const metadata = {
+  title: "Astro starter theme with Tailwind CSS",
+  description: "A starter theme for Astro project with Tailwind CSS...",
+  keywords: "Astro, starter, theme, basics, tutorial, example",
+  robots: "index, follow",
+  author: "Your Name",
+  image: "/images/site-image.jpg",
+  type: "website",
+};
+```
+
+### Site Configuration
+
+The `config` object contains settings related to deployment and content.
+
+```typescript
+export const config = {
+  url: "https://mnyorba.github.io/",
+  base: "/astro-starter",
+  postsPerPage: 10,
+};
+```
+
+-   `url`: Your site's deploy URL.
+-   `base`: The base path of your site (e.g., `/blog`).
+-   `postsPerPage`: Number of posts to display per page in the blog index.
+
 ## 🚀 Deployment
+  [![Deploy to GitHub Pages](https://img.shields.io/badge/Deploy%20to-GitHub%20Pages-blue?logo=github)](https://github.com/mnyorba/astro-starter/actions)
+  [![Deploy to Vercel](https://img.shields.io/badge/Deploy%20to-Vercel-blue?logo=vercel)](https://vercel.com/new/clone?repository-url=https://github.com/mnyorba/astro-starter)
+  [![Deploy to Netlify](https://img.shields.io/badge/Deploy%20to-Netlify-blue?logo=netlify)](https://app.netlify.com/start/deploy?repository=https://github.com/mnyorba/astro-starter)
 
-This starter theme comes with a pre-configured GitHub Actions workflow to automatically build and deploy your site to GitHub Pages.
+This project can be deployed to a variety of platforms.
 
-The workflow is set to run manually. You can trigger it from the "Actions" tab in your GitHub repository.
+- **GitHub Pages**: 
+  A pre-configured GitHub Actions workflow is included to build and deploy your site to GitHub Pages. Make sure to set the `site` and `base` properties in `astro.config.mjs` correctly for your repository. You can trigger the workflow manually from the "Actions" tab in your GitHub repository.
+
+- **Vercel & Netlify**: 
+  Deploying to Vercel and Netlify is a zero-configuration process. Connect your GitHub repository and the platforms will automatically detect and build your Astro site.
+
+- **Other Platforms**: Astro supports deployment to many other platforms like AWS, Cloudflare Pages, and more. Check out the [Astro documentation](https://docs.astro.build/en/guides/deploy/) for more information.
 
 ## 📄 License
 
