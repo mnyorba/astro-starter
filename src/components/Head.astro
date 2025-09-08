@@ -47,6 +47,7 @@ const schema = {
     }),
   }),
 };
+console.log(schema);
 ---
 
 <!-- Common meta tags -->
@@ -96,9 +97,8 @@ const schema = {
 
 <!-- Structured data (Schema.org) -->
 <script
-  is:inline
-  set:html
   type="application/ld+json"
+  is:inline
   set:html={JSON.stringify(schema)}
 />
 
