@@ -47,6 +47,22 @@ const { Content } = await render(post);
     <p>
       By {author.data.name} on {post.data.publishDate.toLocaleDateString()}
     </p>
+    {
+      post.data.updateDate &&
+        post.data.updateDate?.valueOf() !== post.data.publishDate.valueOf() && (
+          <p>Last updated on {post.data.updateDate?.toLocaleDateString()}</p>
+        )
+    }
+    {
+      post.data.category && post.data.category.length > 0 && (
+        <p>Category: {post.data.category.join(", ")}</p>
+      )
+    }
+    {
+      post.data.tag && post.data.tag.length > 0 && (
+        <p>Tags: {post.data.tag.join(", ")}</p>
+      )
+    }
     <hr />
     <Content />
   </article>

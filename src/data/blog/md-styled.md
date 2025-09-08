@@ -1,6 +1,7 @@
 ---
 title: Markdown Style Guide(md)
 publishDate: 2025-08-21 14:00:00
+updateDate: 2025-09-21 14:00:00
 draft: false
 description: |
   Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
@@ -11,7 +12,7 @@ category:
   - Markdown
   - Style
   - Syntax
-tags:
+tag:
   - Dev
   - Branding
   - Backend

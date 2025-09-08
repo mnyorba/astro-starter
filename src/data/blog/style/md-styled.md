@@ -11,7 +11,7 @@ category:
   - Markdown
   - Style
   - Syntax
-tags:
+tag:
   - Dev
   - Branding
   - Backend
