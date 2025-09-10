@@ -26,9 +26,11 @@ A feature-rich starter theme for Astro, designed for simplicity, best practices,
 -   **Content Collections**: Type-safe and organized content for your blog.
 -   **Automatic Sitemap**: `@astrojs/sitemap` is configured to generate a sitemap on build.
 -   **Custom Base URL Handling**: A custom remark plugin ensures that all asset paths work correctly, even when deploying to a subfolder.
+-   **Pagination for Blog**: Built-in SEO-friendly pagination for blog posts with customizable navigation.
+-   **Localization**: Global locale and date formatting settings for easy adaptation to your language and region.
+-   **Google Analytics & Tag Manager via Partytown**: Easily connect Google Analytics or GTM using the [@astrojs/partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) integration for optimal performance.
 -   **Prettier**: Code formatter is set up with plugins for Astro and Tailwind CSS for consistent code style.
 -   **GitHub Actions CI/CD**: A pre-configured workflow to build and deploy your site to GitHub Pages.
--   **Google Analytics & Tag Manager via Partytown**: Easily connect Google Analytics or GTM using the [@astrojs/partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) integration for optimal performance.
 
 ## 🚀 Getting Started
 
@@ -120,6 +122,16 @@ export const config = {
 -   `url`: Your site's deploy URL.
 -   `base`: The base path of your site (e.g., `/blog`).
 -   `postsPerPage`: Number of posts to display per page in the blog index.
+
+### Pagination
+
+Blog pagination is implemented with dynamic routes (`/blog/2/`, `/blog/3/`, etc.) and a reusable pagination component.  
+You can set the number of posts per page in `config.postsPerPage` in `src/consts.ts`.
+
+### Localization
+
+Locale and date formatting are configured globally in `src/consts.ts` under the `locale` object.  
+Change `locale.default` and `locale.date` to set your preferred language and date format for the entire site.
 
 ### Analytics
 
