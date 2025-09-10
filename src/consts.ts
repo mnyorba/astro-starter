@@ -17,7 +17,7 @@ export const metadata = {
 export const config = {
   url: "https://mnyorba.github.io/", // Your site's deploy URL. It must start with `https://` or `http://`.
   base: "/astro-starter", // The base path of your site in your deploy URL. e.g. "/blog".
-  postsPerPage: 10, // Number of posts per page.
+  postsPerPage: 3, // Number of posts per page.
 };
 
 // Site social
@@ -38,5 +38,18 @@ export const analytics = {
   },
   google: {
     id: "GTM-52VX65NP",
+  },
+};
+
+// Site locale
+export const locale = {
+  default: "en-US",
+  date: {
+    locale: "en-US",
+    options: {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    } as Intl.DateTimeFormatOptions,
   },
 };
