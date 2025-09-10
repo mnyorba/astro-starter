@@ -2,8 +2,19 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { config, locale } from "../../consts";
-
 import Pagination from "../../components/navigation/Pagination.astro";
+
+// Generate all pagination pages
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => data.draft !== true);
+  const postsPerPage = config.postsPerPage;
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  // Pages from 2 to totalPages (because /blog/ is index.astro)
+  return Array.from({ length: totalPages - 1 }).map((_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
 
 const posts = (
   await getCollection("blog", ({ data }) => data.draft !== true)
@@ -11,17 +22,32 @@ const posts = (
 
 const postsPerPage = config.postsPerPage;
 const totalPages = Math.ceil(posts.length / postsPerPage);
-const currentPage = 1;
-const paginatedPosts = posts.slice(0, postsPerPage);
 
-const title = "Blog";
+// Get page number from params
+const { page } = Astro.params;
+const currentPage = Number(page);
+
+// Redirect to /blog/, if page 1
+if (currentPage === 1) {
+  return Astro.redirect(`${config.base}/blog/`);
+}
+
+// 404 if the page does not exist
+if (currentPage > totalPages || currentPage < 1) {
+  throw Astro.redirect("/404");
+}
+
+const offset = (currentPage - 1) * postsPerPage;
+const paginatedPosts = posts.slice(offset, offset + postsPerPage);
+
+const title = `Blog — Page ${currentPage}`;
 const description = "A collection of articles on topics I'm interested in.";
 ---
 
 <Layout title={title} description={description}>
   <section class="animate-fade-down text-center">
     <header>
-      <h1>{title}</h1>
+      <h1>Blog</h1>
       <p class="text-lg font-semibold">{description}</p>
     </header>
 
@@ -59,9 +85,9 @@ const description = "A collection of articles on topics I'm interested in.";
 
     <!-- Pagination -->
     <Pagination
-      currentPage={currentPage}
       totalPages={totalPages}
-      basePath="blog"
+      currentPage={currentPage}
+      baseUrl="/blog"
     />
   </section>
 </Layout>
