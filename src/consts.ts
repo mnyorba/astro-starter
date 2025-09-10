@@ -29,3 +29,14 @@ export const social = {
   linkedin: "https://linkedin.com/in/username",
   youtube: "https://youtube.com/username",
 };
+
+// Site analytics
+export const analytics = {
+  plausible: {
+    domain: "mnyorba.github.io",
+    apiHost: "https://analytics.mnyorba.dev",
+  },
+  google: {
+    id: "GTM-52VX65NP",
+  },
+};

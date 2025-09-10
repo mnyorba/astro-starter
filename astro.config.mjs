@@ -10,6 +10,8 @@ import sitemap from "@astrojs/sitemap";
 
 import { config } from './src/consts';
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
   site: config.url,
@@ -17,7 +19,15 @@ export default defineConfig({
   trailingSlash: "always",
   vite: { plugins: [tailwindcss()], },
   compressHTML: false,
-  integrations: [mdx(), sitemap()],
+  integrations: [
+    mdx(),
+    sitemap(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push', 'gtag'],
+      }
+    })
+  ],
   markdown: {
     remarkPlugins: [
       [remarkBaseUrl, { baseUrl: config.base }],

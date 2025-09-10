@@ -1,6 +1,8 @@
 ---
 import globalStyles from "../styles/global.css?inline";
 
+import Analytics from "./common/Analytics.astro?inline";
+
 import { metadata, config, social } from "../consts";
 
 // This component can be used on any page
@@ -104,4 +106,8 @@ const schema = {
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 
+<!-- Global styles -->
 <style is:inline set:html={globalStyles}></style>
+
+<!-- Analytics -->
+<Analytics />

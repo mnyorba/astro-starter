@@ -28,6 +28,7 @@ A feature-rich starter theme for Astro, designed for simplicity, best practices,
 -   **Custom Base URL Handling**: A custom remark plugin ensures that all asset paths work correctly, even when deploying to a subfolder.
 -   **Prettier**: Code formatter is set up with plugins for Astro and Tailwind CSS for consistent code style.
 -   **GitHub Actions CI/CD**: A pre-configured workflow to build and deploy your site to GitHub Pages.
+-   **Google Analytics & Tag Manager via Partytown**: Easily connect Google Analytics or GTM using the [@astrojs/partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) integration for optimal performance.
 
 ## 🚀 Getting Started
 
@@ -119,6 +120,27 @@ export const config = {
 -   `url`: Your site's deploy URL.
 -   `base`: The base path of your site (e.g., `/blog`).
 -   `postsPerPage`: Number of posts to display per page in the blog index.
+
+### Analytics
+
+Analytics settings are managed in the `analytics` object in `src/consts.ts`.  
+By default, Google Tag Manager is integrated via [@astrojs/partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) for better performance.
+
+```typescript
+export const analytics = {
+  google: {
+    id: "GTM-XXXXXXX" // Your Google Tag Manager ID
+  }
+}
+```
+
+The ID is automatically injected into the analytics script in `src/components/common/Analytics.astro`.  
+To enable analytics, simply set your GTM or Google Analytics ID in `consts.ts` — no need to edit component code.
+
+**How it works:**
+- The theme uses [@astrojs/partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) to offload analytics scripts to a web worker, improving site performance.
+- The `<Analytics />` component is included in the `<head>` of every page.
+- You can use Google Tag Manager or Google Analytics by specifying the correct ID.
 
 ## 🚀 Deployment
   [![Deploy to GitHub Pages](https://img.shields.io/badge/Deploy%20to-GitHub%20Pages-blue?logo=github)](https://github.com/mnyorba/astro-starter/actions)
