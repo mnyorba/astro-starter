@@ -128,6 +128,16 @@ export const config = {
 Blog pagination is implemented with dynamic routes (`/blog/2/`, `/blog/3/`, etc.) and a reusable pagination component.  
 You can set the number of posts per page in `config.postsPerPage` in `src/consts.ts`.
 
+### Table of Contents
+
+The theme uses `remark-toc` to automatically generate a table of contents for your markdown and MDX files.
+To add a TOC to a post, simply add a heading with the text `Table of Contents` where you want the TOC to appear. The plugin will then generate a TOC with a maximum heading depth of 3.
+
+For example:
+```markdown
+## Table of Contents
+```
+
 ### Localization
 
 Locale and date formatting are configured globally in `src/consts.ts` under the `locale` object.  

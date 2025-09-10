@@ -6,6 +6,8 @@ import mdx from "@astrojs/mdx";
 
 import remarkBaseUrl from './plugins/remark-baseurl.js';
 
+import remarkToc from 'remark-toc';
+
 import sitemap from "@astrojs/sitemap";
 
 import { config } from './src/consts';
@@ -31,6 +33,7 @@ export default defineConfig({
   markdown: {
     remarkPlugins: [
       [remarkBaseUrl, { baseUrl: config.base }],
+      [remarkToc, { heading: 'Table of Contents', maxDepth: 3 }],
     ],
   },
 });
