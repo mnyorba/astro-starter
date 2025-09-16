@@ -2,6 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { config, locale } from "../../consts";
+
+import RssFeed from "../../components/common/RssFeed.astro";
+
 import Pagination from "../../components/navigation/Pagination.astro";
 
 // Generate all pagination pages
@@ -40,14 +43,15 @@ if (currentPage > totalPages || currentPage < 1) {
 const offset = (currentPage - 1) * postsPerPage;
 const paginatedPosts = posts.slice(offset, offset + postsPerPage);
 
-const title = `Blog — Page ${currentPage}`;
+const title = "Blog";
+const titleLayout = `Blog — Page ${currentPage}`;
 const description = "A collection of articles on topics I'm interested in.";
 ---
 
-<Layout title={title} description={description}>
+<Layout title={titleLayout} description={description}>
   <section class="animate-fade-down text-center">
     <header>
-      <h1>Blog</h1>
+      <h1>{title} <RssFeed /></h1>
       <p class="text-lg font-semibold">{description}</p>
     </header>
 
