@@ -1,9 +1,8 @@
 ---
 import globalStyles from "../styles/global.css?inline";
-
 import Analytics from "./common/Analytics.astro?inline";
-
-import { metadata, config, social } from "../consts";
+import { metadata, config } from "../consts";
+import { default as contacts } from "../data/contacts.json";
 
 // This component can be used on any page
 const { title, description, image, type, publishDate, updateDate, author } =
@@ -25,9 +24,12 @@ const siteImage = imagePath.startsWith("http")
       Astro.site,
     ).toString();
 
-const twitterHandle = social.twitter
-  ? `@${social.twitter.split("/").pop()}`
-  : "";
+const social = contacts[0]?.social ?? {};
+const twitterUrl =
+  "twitter" in social && Array.isArray(social.twitter) && social.twitter[0]
+    ? social.twitter[0]
+    : "";
+const twitterHandle = twitterUrl ? `@${twitterUrl.split("/").pop()}` : "";
 
 const schema = {
   "@context": "https://schema.org",
@@ -83,8 +85,8 @@ const schema = {
 />
 <meta name="twitter:image" content={siteImage} />
 <meta name="twitter:url" content={pageUrl} />
-<meta name="twitter:site" content={twitterHandle} />
-<meta name="twitter:creator" content={twitterHandle} />
+{twitterHandle && <meta name="twitter:site" content={twitterHandle} />}
+{twitterHandle && <meta name="twitter:creator" content={twitterHandle} />}
 
 <!-- Apple -->
 <meta name="apple-mobile-web-app-title" content={title || metadata.title} />
