@@ -1,17 +1,65 @@
 ---
 import { config } from "../../consts";
-// import { Menu }
+
+// Menu structure (supports any nesting level)
+const menu = [
+  { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog/" },
+  {
+    label: "Articles",
+    children: [
+      { label: "Markdown Style Guide(md)", href: "/blog/md-styled/" },
+      {
+        label: "Demo for Table of Contents",
+        href: "/blog/article/example-table-of-contents/",
+      },
+      {
+        label: "Three level",
+        children: [
+          { label: "Markdown Style Guide(md)", href: "/blog/md-styled/" },
+          {
+            label: "Demo for Table of Contents",
+            href: "/blog/article/example-table-of-contents/",
+          },
+        ],
+      },
+    ],
+  },
+  { label: "Contact", href: "/contact/" },
+];
+
+// Тип для пункту меню
+type MenuItem = {
+  label: string;
+  href?: string;
+  children?: MenuItem[];
+};
 ---
 
-<li><a href={`${config.base}/`}>Home</a></li>
-<li><a href={`${config.base}/blog/`}>Blog</a></li>
-<li>
-  <details>
-    <summary>Parent</summary>
-    <ul class="bg-base-100 rounded-t-none p-2">
-      <li class="w-max"><a href="#" aria-label="Submenu 1">Submenu 1</a></li>
-      <li class="w-max"><a href="#" aria-label="Submenu 2">Submenu 2</a></li>
-    </ul>
-  </details>
-</li>
-<li><a href={`${config.base}/contact/`}>Contact</a></li>
+{
+  // Recursive function to render menu
+  function renderMenu(items: MenuItem[] = menu) {
+    return items.map((item) => {
+      if (item.children && item.children.length > 0) {
+        return (
+          <li>
+            <details>
+              <summary>{item.label}</summary>
+              <ul class="bg-base-100 rounded-t-none p-2">
+                {renderMenu(item.children)}
+              </ul>
+            </details>
+          </li>
+        );
+      } else {
+        return (
+          <li class="w-max">
+            <a href={`${config.base}${item.href}`} aria-label={item.label}>
+              {item.label}
+            </a>
+          </li>
+        );
+      }
+    });
+  }
+}
