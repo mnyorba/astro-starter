@@ -11,16 +11,26 @@ const { count = 3 } = Astro.props;
 
 const posts = (await getCollection("blog", ({ data }) => data.draft !== true))
   .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
-  .slice(0, 3);
+  .slice(0, count);
 
 const title = "Latest Posts";
 const description = "The latest updates from our blog.";
+
+// Tailwind v4: only static class names are safe!
+const gridCols =
+  count >= 4
+    ? "md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"
+    : count === 3
+      ? "md:grid-cols-2 lg:grid-cols-3"
+      : count === 2
+        ? "md:grid-cols-2"
+        : "";
 ---
 
 <section class="mb-8 text-center">
   {title && <h2 class="animate-fade-up mb-2 text-3xl font-bold">{title}</h2>}
   {description && <p class="animate-fade-up mb-8">{description}</p>}
-  <div class={`grid gap-6 ${count > 1 ? `grid-cols-${count}` : ""}`}>
+  <div class={`grid gap-6 grid-cols-1 ${gridCols}`}>
     {
       posts.map((post) => (
         <article class="animate-fade-up rounded border p-4 shadow !transition hover:shadow-lg">
@@ -49,4 +59,8 @@ const description = "The latest updates from our blog.";
       ))
     }
   </div>
+
+  <a href={`${config.base}/blog/`} class="btn btn-lg animate-fade-up mt-8"
+    >All Posts</a
+  >
 </section>
