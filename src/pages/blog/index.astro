@@ -28,7 +28,7 @@ const description = "A collection of articles on topics I'm interested in.";
     <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
       {
         paginatedPosts.map((post) => (
-          <article class="animate-fade-up overflow-hidden shadow-md">
+          <article class="animate-fade-up rounded border p-4 shadow !transition hover:shadow-lg">
             <a href={`${config.base}/blog/${post.id}/`}>
               {post.data.image && (
                 <img
@@ -39,18 +39,16 @@ const description = "A collection of articles on topics I'm interested in.";
                   height="360"
                 />
               )}
-              <div class="p-6">
-                <h2 class="mb-2 text-2xl font-bold">{post.data.title}</h2>
-                <p class="mb-4">{post.data.description}</p>
-                <p class="text-sm opacity-60">
-                  <time datetime={post.data.publishDate.toISOString()}>
-                    {post.data.publishDate.toLocaleDateString(
-                      locale.date.locale,
-                      locale.date.options,
-                    )}
-                  </time>
-                </p>
-              </div>
+              <h3 class="mb-2 text-xl font-bold">{post.data.title}</h3>
+              <p class="mb-2 text-sm opacity-70">
+                <time datetime={post.data.publishDate.toISOString()}>
+                  {post.data.publishDate.toLocaleDateString(
+                    locale.date.locale,
+                    locale.date.options,
+                  )}
+                </time>
+              </p>
+              <p class="mb-2">{post.data.description}</p>
             </a>
           </article>
         ))

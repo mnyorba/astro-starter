@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Welcome from "../components/Welcome.astro";
+import LastPosts from "../components/common/LastPosts.astro";
 
 const title = "Welcome to Astro Theme!";
 const description =
@@ -12,4 +13,5 @@ const description =
 
 <Layout title={title} description={description}>
   <Welcome title={title} />
+  <LastPosts />
 </Layout>
