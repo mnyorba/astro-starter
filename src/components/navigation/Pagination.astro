@@ -44,7 +44,7 @@ const pagesToShow = getPagesToShow(totalPages, currentPage);
 {
   totalPages > 1 && (
     <nav class="join pt-10" aria-label="Pagination">
-      {pagesToShow.map((pageNum, idx) => {
+      {pagesToShow.map((pageNum) => {
         if (pageNum === "dots") {
           return (
             <span class="join-item btn btn-disabled" aria-hidden="true">
