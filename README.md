@@ -33,6 +33,7 @@ Astro Starter is a modern, feature-rich template for Astro 5, powered by Tailwin
 -   **Pagination for Blog**: Built-in SEO-friendly pagination for blog posts with customizable navigation.
 -   **Flexible global data and navigation configuration**: Centralized management of site data and navigation menus.
 -   **Localization**: Global locale and date formatting settings for easy adaptation to your language and region.
+-   **404 Page**: A custom 404 page for a better user experience.
 -   **Google Analytics & Tag Manager via Partytown**: Easily connect Google Analytics or GTM using the [@astrojs/partytown](https://docs.astro.build/en/guides/integrations-guide/partytown/) integration for optimal performance.
 -   **Prettier**: Code formatter is set up with plugins for Astro and Tailwind CSS for consistent code style.
 -   **GitHub Actions CI/CD**: A pre-configured workflow to build and deploy your site to GitHub Pages.
