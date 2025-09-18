@@ -7,12 +7,18 @@
       "phone": ["+44 20 7123 4567", "+44 20 7123 4567"]
     },
     "social": {
-      "telegram": ["https://t.me/john", "@t.me/john"],
       "github": ["https://github.com/john-doe", "github"],
       "linkedin": [
         "https://www.linkedin.com/in/john-doe-2b4a791b1/",
         "linkedin"
-      ]
+      ],
+      "facebook": ["https://www.facebook.com/john.doe", "facebook"],
+      "twitter": ["https://twitter.com/johndoe", "twitter"],
+      "instagram": ["https://www.instagram.com/johndoe/", "instagram"],
+      "youtube": ["https://www.youtube.com/johndoe", "youtube"],
+      "vimeo": ["https://vimeo.com/johndoe", "vimeo"],
+      "behance": ["https://www.behance.net/johndoe", "behance"],
+      "telegram": ["https://t.me/john", "@t.me/john"]
     },
     "location": {
       "street": "Baker Street 221B/3",
