@@ -42,6 +42,18 @@
  * You can define your own CSS classes here and then use them in your HTML components.
  */
 
+a svg {
+  @apply opacity-100;
+  a &:hover {
+    @apply opacity-80;
+  }
+}
+
+svg {
+  @apply h-6;
+  @apply w-6;
+}
+
 /* CSS transitions to animate elements when they become visible
  *
  * The approach is to apply the styles when the "is-visible" class is added to the element.
