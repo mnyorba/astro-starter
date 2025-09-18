@@ -1,6 +1,7 @@
 ---
-// filepath: /home/mnjorba/astro/astro-starter/src/pages/404.astro
 import Layout from "../layouts/Layout.astro";
+
+import {config} from "../consts";
 
 const title = "404";
 const description = "Page not found";
@@ -14,7 +15,7 @@ const content =
     <h2 class="mt-0 mb-4 text-2xl font-semibold sm:text-4xl">{description}</h2>
     <p class="text-base-content mb-8">{content}</p>
     <a
-      href="/"
+      href={`${config.base}/`}
       class="btn btn-lg sm:btn-xl px-8 py-3 text-lg"
     >
       Back to Home
