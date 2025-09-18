@@ -19,7 +19,9 @@ export default defineConfig({
   site: config.url,
   base: config.base,
   trailingSlash: "always",
-  vite: { plugins: [tailwindcss()], },
+  vite: {
+    plugins: [tailwindcss()],
+  },
   compressHTML: false,
   integrations: [
     mdx(),
