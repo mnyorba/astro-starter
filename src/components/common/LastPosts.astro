@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import { config, locale } from "../../consts";
 
+import { Image } from "astro:assets";
+
 /**
  * Component to get the latest posts from the "blog" collection.
  * Props:
@@ -32,16 +34,18 @@ const gridCols =
   {description && <p class="animate-fade-up mb-8">{description}</p>}
   <div class={`grid gap-6 grid-cols-1 ${gridCols}`}>
     {
-      posts.map((post) => (
+      posts.map((post, idx) => (
         <article class="animate-fade-up rounded border p-4 shadow !transition hover:shadow-lg">
           <a href={`${config.base}/blog/${post.id}/`}>
             {post.data.image && (
-              <img
+              <Image
                 class="h-48 w-full object-cover"
                 src={`${config.base}${post.data.image.src}`}
                 alt={post.data.image.alt}
-                width="720"
-                height="360"
+                width={720}
+                height={360}
+                loading={idx <= 2 ? "eager" : "lazy"}
+                sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
               />
             )}
             <h3 class="mb-2 text-xl font-bold">{post.data.title}</h3>
