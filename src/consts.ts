@@ -1,51 +1,74 @@
-// Place any global data here.
-// You can import data from anywhere in your site by using the `import` statement.
+/**
+ * Global constants and site configuration.
+ *
+ * Contains all site-wide settings including metadata, social links,
+ * analytics configuration, and localization options.
+ *
+ * @module src/consts
+ */
 
+/**
+ * Site metadata for HTML head and SEO
+ */
 export const metadata = {
-  // Site metadata
+  /** Main site title */
   title: "Astro starter theme with Tailwind CSS",
+  /** Site description for meta tags and search engines */
   description:
     "A starter theme for Astro project with Tailwind CSS and other useful tools to get you started quickly.",
+  /** SEO keywords */
   keywords: "Astro, starter, theme, basics, tutorial, example",
+  /** Search engine crawling instructions */
   robots: "index, follow",
+  /** Site author name */
   author: "Your Name",
+  /** Default social sharing image */
   image: "/images/site-image.jpg",
-  type: "website", // 'website' | 'article'
+  /** Open Graph content type */
+  type: "website" as const, // 'website' | 'article'
 };
 
-// Site configuration
+/**
+ * Site deployment and build configuration
+ */
 export const config = {
-  url: "https://mnyorba.github.io/", // Your site's deploy URL. It must start with `https://` or `http://`.
-  base: "/astro-starter", // The base path of your site in your deploy URL. e.g. "/blog".
-  postsPerPage: 3, // Number of posts per page.
+  /** Site's deploy URL - must start with https:// or http:// */
+  url: "https://mnyorba.github.io/",
+  /** Base path for deployment (e.g. "/blog" for GitHub Pages) */
+  base: "/astro-starter",
+  /** Number of blog posts displayed per page */
+  postsPerPage: 3,
 };
 
-// Site social
-export const social = {
-  facebook: "https://facebook.com/username",
-  twitter: "https://twitter.com/username",
-  instagram: "https://instagram.com/username",
-  github: "https://github.com/username",
-  linkedin: "https://linkedin.com/in/username",
-  youtube: "https://youtube.com/username",
-};
-
-// Site analytics
+/**
+ * Analytics and tracking configuration
+ */
 export const analytics = {
+  /** Plausible Analytics settings */
   plausible: {
+    /** Domain to track */
     domain: "mnyorba.github.io",
+    /** Self-hosted Plausible instance URL */
     apiHost: "https://analytics.mnyorba.dev",
   },
+  /** Google Tag Manager configuration */
   google: {
+    /** GTM container ID */
     id: "GTM-52VX65NP",
   },
 };
 
-// Site locale
+/**
+ * Internationalization and date formatting settings
+ */
 export const locale = {
+  /** Default site locale */
   default: "en-US",
+  /** Date formatting configuration */
   date: {
+    /** Locale for date formatting */
     locale: "en-US",
+    /** Intl.DateTimeFormat options */
     options: {
       year: "numeric",
       month: "long",
