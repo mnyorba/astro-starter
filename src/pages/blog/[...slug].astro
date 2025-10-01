@@ -16,12 +16,24 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+if (!post) {
+  return new Response(null, {
+    status: 404,
+    statusText: "Not found",
+  });
+}
 // Check if post.data and post.data.author exist
 let author = { data: { name: "Unknown Author" } };
+
 if (post?.data?.author) {
-  // Get full author data by reference
-  const authorEntry = await getEntry(post.data.author);
-  if (authorEntry) author = authorEntry;
+  try {
+    // Get full author data by reference
+    const authorEntry = await getEntry(post.data.author);
+    if (authorEntry) author = authorEntry;
+  } catch (error) {
+    console.warn("Author not found:", post.data.author);
+  }
 }
 
 // const author = await getEntry(post.data.author);
@@ -39,11 +51,15 @@ const { Content } = await render(post);
 >
   <article>
     <h1>{post.data.title}</h1>
-    <img
-      src={`${config.base}${post.data.image?.src}`}
-      alt={`${post.data.image?.alt} || ${post.data.title}`}
-      class="w-lg"
-    />
+    {
+      post.data.image && (
+        <img
+          src={`${config.base}${post.data.image.src}`}
+          alt={`${post.data.image.alt} || ${post.data.title}`}
+          class="w-lg"
+        />
+      )
+    }
     <p>
       By {author.data.name} on {post.data.publishDate.toLocaleDateString()}
     </p>
