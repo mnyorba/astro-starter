@@ -1,22 +1,40 @@
-// Import utilites from "astro:content".
-import { z, defineCollection, reference } from "astro:content";
+/**
+ * Content collections configuration for Astro.
+ *
+ * Defines schemas and validation rules for blog posts and authors.
+ * Content is loaded from markdown/MDX files and JSON data files.
+ *
+ * @see https://docs.astro.build/en/guides/content-collections/
+ */
 
-// Import loader(s).
+// Import utilities from "astro:content".
+import { z, defineCollection, reference } from "astro:content";
 import { glob } from "astro/loaders";
 
-// Define a schema for each collection.
+/**
+ * Blog posts collection schema
+ *
+ * Loads markdown and MDX files from ./src/data/blog/
+ * Supports categories, tags, featured images, and author references.
+ */
 const blogCollection = defineCollection({
   loader: glob({
     pattern: ["**/[^_]*.md", "**/[^_]*.mdx"],
     base: "./src/data/blog",
   }),
   schema: z.object({
-    publishDate: z.date().default(new Date()), // e.g. 2019-12-01 00:00:00
-    updateDate: z.date().optional(), // e.g. 2019-12-01 00:00:00
+    /** Publication date (defaults to current date) */
+    publishDate: z.date().default(new Date()),
+    /** Last update date (optional) */
+    updateDate: z.date().optional(),
+    /** Hide from production if true */
     draft: z.boolean().optional(),
 
+    /** Post title (required) */
     title: z.string(),
+    /** Post description for SEO and previews */
     description: z.string(),
+    /** Featured image with alt text */
     image: z
       .object({
         src: z.string(),
@@ -24,21 +42,37 @@ const blogCollection = defineCollection({
       })
       .optional(),
 
+    /** Post categories for organization */
     category: z.array(z.string()).optional(),
+    /** Post tags for filtering */
     tag: z.array(z.string()).optional(),
+    /** Reference to author from authors collection */
     author: reference("authors"),
   }),
 });
 
+/**
+ * Authors collection schema
+ *
+ * Loads author data from JSON files in ./src/data/authors/
+ * Referenced by blog posts for author information.
+ */
 const authorsCollection = defineCollection({
   loader: glob({ pattern: "**/[^_]*.json", base: "./src/data/authors" }),
   schema: z.object({
+    /** Author display name */
     name: z.string(),
+    /** Author website URL */
     site: z.string().url(),
   }),
 });
 
-// Export a single `collections` object to register your collection(s).
+/**
+ * Exported collections registry
+ *
+ * Register all content collections here to make them available
+ * throughout the Astro application via astro:content APIs.
+ */
 export const collections = {
   blog: blogCollection,
   authors: authorsCollection,
