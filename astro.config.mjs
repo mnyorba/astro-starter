@@ -22,10 +22,6 @@ export default defineConfig({
   base: config.base,
   trailingSlash: "always",
   compressHTML: false,
-  output: "server",
-  adapter: node({
-    mode: "standalone",
-  }),
   vite: {
     plugins: [tailwindcss()],
   },
