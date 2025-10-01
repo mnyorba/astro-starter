@@ -12,16 +12,17 @@
   "dependencies": {
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.6",
+    "@astrojs/node": "^9.4.4",
     "@astrojs/partytown": "^2.1.4",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.13",
     "astro": "^5.14.1",
-    "daisyui": "^5.1.25",
+    "daisyui": "^5.1.26",
     "remark-toc": "^9.0.0",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2",
+    "typescript": "^5.9.3",
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {

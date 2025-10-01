@@ -2,6 +2,8 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from "@tailwindcss/vite";
 
+import node from "@astrojs/node";
+
 import mdx from "@astrojs/mdx";
 
 import remarkBaseUrl from './plugins/remark-baseurl.js';
@@ -19,10 +21,14 @@ export default defineConfig({
   site: config.url,
   base: config.base,
   trailingSlash: "always",
+  compressHTML: false,
+  output: "server",
+  adapter: node({
+    mode: "standalone",
+  }),
   vite: {
     plugins: [tailwindcss()],
   },
-  compressHTML: false,
   integrations: [
     mdx(),
     sitemap(),
