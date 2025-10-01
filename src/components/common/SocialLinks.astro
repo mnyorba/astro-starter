@@ -23,27 +23,70 @@ const iconMap = {
   youtube: YoutubeIcon,
 };
 
+// Extract social data with format support
 const social = contacts[0]?.social ?? {};
-const socialList = Object.entries(social).filter(([_, value]) => value?.[0]);
+
+// Helper function to parse contact format
+function parseContactValue(value: any): { url: string; label: string } | null {
+  if (!value) return null;
+
+  // Handle different formats
+  if (typeof value === "string") {
+    // Format: "url"
+    return { url: value, label: "" };
+  }
+
+  if (Array.isArray(value)) {
+    if (value.length === 3) {
+      // Format: ["title", "url", "display text"]
+      return { url: value[1], label: value[2] || value[0] || "" };
+    } else if (value.length === 2) {
+      // Format: ["url", "display text"]
+      return { url: value[0], label: value[1] || "" };
+    } else if (value.length === 1) {
+      // Format: ["url"]
+      return { url: value[0], label: "" };
+    }
+  }
+
+  return null;
+}
+
+// Process social links
+const socialList = Object.entries(social)
+  .map(([key, value]) => {
+    const parsed = parseContactValue(value);
+    if (!parsed || !parsed.url) return null;
+
+    const Icon = iconMap[key as keyof typeof iconMap];
+    if (!Icon) return null;
+
+    return {
+      key,
+      url: parsed.url,
+      label: parsed.label || key.charAt(0).toUpperCase() + key.slice(1),
+      Icon,
+    };
+  })
+  .filter(Boolean);
 ---
 
 <div class="flex flex-wrap gap-3">
   {
-    socialList.map(([key, value]) => {
-      const Icon = iconMap[key as keyof typeof iconMap];
-      if (!Icon) return null;
-      const label = key.charAt(0).toUpperCase() + key.slice(1);
+    socialList.map((item) => {
+      if (!item) return null;
+
       return (
         <a
-          href={value[0]}
+          href={item.url}
           target="_blank"
-          rel="noopener"
-          aria-label={key}
-          title={label}
-          data-tip={label}
-          class="tooltip"
+          rel="noopener noreferrer"
+          aria-label={`Visit ${item.label}`}
+          title={item.label}
+          data-tip={item.label}
+          class="tooltip transition-transform duration-200 hover:scale-110"
         >
-          <Icon />
+          <item.Icon class="h-6 w-6 fill-current" />
         </a>
       );
     })
