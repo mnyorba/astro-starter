@@ -290,24 +290,16 @@ const error = Astro.url.searchParams.get("error");
         demoSuccess.style.display = "flex";
         demoSuccess.scrollIntoView({ behavior: "smooth", block: "center" });
 
-        // Reset form after 2 seconds
+        // Reset form after 3 seconds
         setTimeout(() => {
           demoForm.reset();
 
-          // Hide success message after 3 more seconds
+          // Hide success message after 3.5 more seconds
           setTimeout(() => {
             demoSuccess.style.display = "none";
-          }, 3000);
-        }, 2000);
+          }, 3500);
+        }, 3000);
       });
     }
   });
-
-  // Smooth scroll to existing result message
-  const alert = document.querySelector(
-    ".alert:not(#demo-success)",
-  ) as HTMLElement | null;
-  if (alert) {
-    alert.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
 </script>
