@@ -1,6 +1,6 @@
 {
   "name": "astro-starter",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A modern Astro starter template",
   "keywords": [
     "astro",
@@ -9,6 +9,7 @@
     "tailwind",
     "daisyui"
   ],
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/mnyorba/astro-starter"
@@ -18,7 +19,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "format": "prettier ./src --write"
+    "format": "prettier ./src ./docs --write"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

@@ -1,20 +1,16 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+
 import tailwindcss from "@tailwindcss/vite";
-
-import node from "@astrojs/node";
-
 import mdx from "@astrojs/mdx";
 
 import remarkBaseUrl from './plugins/remark-baseurl.js';
-
 import remarkToc from 'remark-toc';
-
 import sitemap from "@astrojs/sitemap";
+import partytown from "@astrojs/partytown";
 
 import { config } from './src/consts';
 
-import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,6 +18,7 @@ export default defineConfig({
   base: config.base,
   trailingSlash: "always",
   compressHTML: false,
+  output: "static",
   vite: {
     plugins: [tailwindcss()],
   },

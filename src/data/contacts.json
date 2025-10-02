@@ -25,7 +25,14 @@
       "street": "Baker Street 221B/3",
       "city": "London, NW1 6XE",
       "country": "United Kingdom",
-      "workingHours": ["Working hours", "Mon-Fri, 9:00-18:00 (UTC+2)"]
+      "workingHours": [
+        "Working hours",
+        [
+          "Mon-Fri, 9:00-18:00 (UTC+2)",
+          "Sat, 10:00-14:00 (UTC+2)",
+          "Sun, Closed"
+        ]
+      ]
     }
   }
 ]
