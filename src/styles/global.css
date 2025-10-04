@@ -67,11 +67,20 @@ svg {
   @apply translate-y-8;
   @apply transition-opacity duration-500;
   @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
+  @apply backface-hidden;
+  @apply transform-3d;
+  @apply transform-cpu;
 }
 
 .animate-fade-up.is-visible {
   @apply opacity-100;
   @apply translate-y-0;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
 }
 
 .animate-fade-right {
@@ -79,11 +88,20 @@ svg {
   @apply translate-x-8;
   @apply transition-opacity duration-500;
   @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
+  @apply backface-hidden;
+  @apply transform-3d;
+  @apply transform-cpu;
 }
 
 .animate-fade-right.is-visible {
   @apply opacity-100;
   @apply translate-x-0;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
 }
 
 .animate-fade-left {
@@ -91,11 +109,20 @@ svg {
   @apply -translate-x-8;
   @apply transition-opacity duration-500;
   @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
+  @apply backface-hidden;
+  @apply transform-3d;
+  @apply transform-cpu;
 }
 
 .animate-fade-left.is-visible {
   @apply opacity-100;
   @apply translate-x-0;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
 }
 
 .animate-fade-down {
@@ -103,9 +130,18 @@ svg {
   @apply -translate-y-8;
   @apply transition-opacity duration-500;
   @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
+  @apply backface-hidden;
+  @apply transform-3d;
+  @apply transform-cpu;
 }
 
 .animate-fade-down.is-visible {
   @apply opacity-100;
   @apply translate-y-0;
+  @apply transition-opacity duration-500;
+  @apply transition-transform duration-500;
+  @apply delay-25;
+  @apply will-change-[opacity,transform];
 }
