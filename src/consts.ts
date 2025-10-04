@@ -15,7 +15,7 @@ export const metadata = {
   title: "Astro starter theme with Tailwind CSS",
   /** Site description for meta tags and search engines */
   description:
-    "A starter theme for Astro project with Tailwind CSS and other useful tools to get you started quickly.",
+    "Astro starter with Tailwind CSS — fast, accessible, and ready to customize.",
   /** SEO keywords */
   keywords: "Astro, starter, theme, basics, tutorial, example",
   /** Search engine crawling instructions */
