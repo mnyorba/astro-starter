@@ -42,9 +42,11 @@
  * You can define your own CSS classes here and then use them in your HTML components.
  */
 
-a svg {
+a svg,
+button svg {
   @apply opacity-100;
-  a &:hover {
+  a &:hover,
+  button &:hover {
     @apply opacity-80;
   }
 }
@@ -144,4 +146,43 @@ svg {
   @apply transition-transform duration-500;
   @apply delay-25;
   @apply will-change-[opacity,transform];
+}
+
+/* Pagefind styles */
+:root {
+  --pagefind-ui-text: color-mix(
+    in oklab,
+    var(--color-base-content) 70%,
+    transparent
+  ) !important;
+  --pagefind-ui-bg: var(--color-base-100) !important;
+}
+
+.pagefind-ui__form::before {
+  @apply !top-3.5;
+  @apply !mask-[url("images/search.svg")];
+}
+
+.pagefind-ui__search-input {
+  @apply !input !pl-10;
+  @apply !w-full;
+  &::placeholder {
+    @apply !text-base-content;
+  }
+}
+
+.pagefind-ui__search-clear {
+  @apply !btn;
+  @apply !top-0;
+  @apply !right-0;
+  @apply !z-1;
+}
+
+.pagefind-ui__result-link {
+  @apply !text-base-content;
+}
+
+.pagefind-ui__results {
+  @apply !overflow-auto;
+  @apply !max-h-[60vh];
 }
