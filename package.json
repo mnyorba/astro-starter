@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site ./dist --verbose",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier ./src ./docs --write"
@@ -30,7 +30,8 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.14.1",
-    "daisyui": "^5.1.26",
+    "daisyui": "^5.1.27",
+    "pagefind": "^1.4.0",
     "remark-toc": "^9.0.0",
     "tailwindcss": "^4.1.14",
     "typescript": "^5.9.3",
