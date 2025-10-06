@@ -108,6 +108,7 @@ const error = Astro.url.searchParams.get("error");
           type="text"
           id="name"
           name="name"
+          autocomplete="name"
           placeholder="Enter your full name"
           class="input input-bordered validator w-full"
           required
@@ -119,13 +120,14 @@ const error = Astro.url.searchParams.get("error");
 
       <!-- Email -->
       <div class="form-control">
-        <label class="label" for="email">
+        <label class="label" for="e-mail">
           <span class="label-text">Email Address *</span>
         </label>
         <input
           type="email"
-          id="email"
+          id="e-mail"
           name="email"
+          autocomplete="email"
           placeholder="your.email@example.com"
           class="input input-bordered validator w-full"
           required
@@ -135,13 +137,14 @@ const error = Astro.url.searchParams.get("error");
 
       <!-- Phone -->
       <div class="form-control">
-        <label class="label" for="phone">
+        <label class="label" for="phone-number">
           <span class="label-text">Phone Number</span>
         </label>
         <input
           type="tel"
-          id="phone"
+          id="phone-number"
           name="phone"
+          autocomplete="tel"
           placeholder="+380 XX XXX XX XX"
           class="input input-bordered validator w-full"
           pattern="[\+]?[0-9\s\-\(\)]+"
@@ -166,6 +169,7 @@ const error = Astro.url.searchParams.get("error");
         <select
           id="subject"
           name="subject"
+          autocomplete="off"
           class="select select-bordered w-full"
         >
           <option value="">Select subject (optional)</option>
@@ -188,6 +192,7 @@ const error = Astro.url.searchParams.get("error");
         <textarea
           id="message"
           name="message"
+          autocomplete="off"
           placeholder="Enter your message..."
           class="textarea textarea-bordered validator h-32 w-full"
           required
@@ -206,7 +211,7 @@ const error = Astro.url.searchParams.get("error");
 
       <!-- Consent -->
       <div class="form-control">
-        <label class="label cursor-pointer justify-start gap-3">
+        <label class="label cursor-pointer justify-start gap-3" for="consent">
           <input
             type="checkbox"
             name="consent"

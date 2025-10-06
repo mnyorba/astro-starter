@@ -13,7 +13,7 @@ const basePath = config.base || "";
         <label class="input w-full">
           <SearchIcon />
           <input
-            class=""
+            id="search-dev"
             type="text"
             placeholder="Search dev"
             title="Search"
@@ -23,7 +23,7 @@ const basePath = config.base || "";
             disabled
           />
         </label>
-          <span class="text-error">Dev mode — build to enable search</span>
+        <span class="text-error">Dev mode — build to enable search</span>
       </fieldset>
     ) : (
       <div>
