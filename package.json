@@ -16,7 +16,8 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site ./dist --verbose",
+    "build": "astro build && node ./scripts/postbuild.cjs",
+    "build1": "astro build && pagefind --site ./dist --verbose",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier ./src ./docs --write"
