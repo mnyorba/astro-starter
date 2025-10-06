@@ -1,0 +1,106 @@
+---
+import SearchIcon from "../../assets/search.svg";
+import { config } from "../../consts";
+const isDev = import.meta.env.DEV;
+const basePath = config.base || "";
+---
+
+<div class="w-full max-w-lg">
+  {
+    isDev ? (
+      <fieldset class="fieldset">
+        <legend class="sr-only">Search</legend>
+        {/* <div class="pagefind-ui svelte-e9gkc3 pagefind-ui--reset"> */}
+        <label class="input w-full">
+          <SearchIcon />
+          <input
+            class=""
+            type="text"
+            placeholder="Search"
+            title="Search"
+            autocapitalize="none"
+            enterkeyhint="search"
+            style="padding-right: 71px;"
+          />
+        </label>
+        {/* </div> */}
+      </fieldset>
+    ) : (
+      <div>
+        {/* <!-- visible fallback always present so search input is shown even if pagefind assets missing --> */}
+        <fieldset id="search" data-base={basePath} class="fieldset">
+          <legend class="sr-only">Search</legend>
+          <span id="debug-info" class="text-xs opacity-60" />
+        </fieldset>
+      </div>
+    )
+  }
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", async () => {
+    const searchEl = document.getElementById("search");
+    const debugEl = document.getElementById("debug-info");
+    if (!searchEl) return;
+
+    // read base from data attribute to avoid injection/quota issues
+    const basePath = (searchEl.dataset.base || "").replace(/\/$/, "");
+
+    debugEl && (debugEl.textContent = "Checking Pagefind files...");
+
+    try {
+      const pagefindPath = `${basePath}/pagefind`;
+      const js = await fetch(`${pagefindPath}/pagefind.js`);
+      const ui = await fetch(`${pagefindPath}/pagefind-ui.js`);
+      const css = await fetch(`${pagefindPath}/pagefind-ui.css`);
+      debugEl &&
+        (debugEl.textContent = `pagefind.js: ${js.status}, pagefind-ui.js: ${ui.status}, pagefind-ui.css: ${css.status}`);
+      if (!js.ok || !ui.ok)
+        throw new Error("Pagefind files missing — run build + pagefind");
+
+      if (css.ok) {
+        const link = document.createElement("link");
+        link.rel = "stylesheet";
+        link.href = `${pagefindPath}/pagefind-ui.css`;
+        document.head.appendChild(link);
+      }
+
+      const script = document.createElement("script");
+      script.src = `${pagefindPath}/pagefind-ui.js`;
+      script.async = true;
+      script.onload = () => {
+        // Pagefind exposes PagefindUI globally
+        // @ts-ignore
+        const PagefindUI = window.PagefindUI ?? (window as any).Pagefind;
+        if (!PagefindUI) {
+          debugEl && (debugEl.textContent = "PagefindUI not found after load");
+          return;
+        }
+        // remove fallback input when UI is ready
+        const fb = document.getElementById("pf-fallback");
+        fb && fb.remove();
+
+        // @ts-ignore
+        new PagefindUI({
+          element: "#search",
+          showSubResults: true,
+          showImages: false,
+          bundlePath: `${pagefindPath}/`,
+        });
+        debugEl && (debugEl.textContent = "Search initialized");
+      };
+      script.onerror = () =>
+        debugEl && (debugEl.textContent = "Failed to load pagefind-ui.js");
+      document.head.appendChild(script);
+    } catch (err: unknown) {
+      console.error(err);
+      debugEl && (debugEl.textContent = (err as string) || "Search error");
+      // keep fallback visible but mark unavailable
+      const fb = document.getElementById("pf-fallback");
+      if (fb) {
+        (fb as HTMLInputElement).placeholder = "Search unavailable";
+        (fb as HTMLInputElement).disabled = true;
+      }
+    }
+  });
+</script>
