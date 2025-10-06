@@ -10,20 +10,20 @@ const basePath = config.base || "";
     isDev ? (
       <fieldset class="fieldset">
         <legend class="sr-only">Search</legend>
-        {/* <div class="pagefind-ui svelte-e9gkc3 pagefind-ui--reset"> */}
         <label class="input w-full">
           <SearchIcon />
           <input
             class=""
             type="text"
-            placeholder="Search"
+            placeholder="Search dev"
             title="Search"
             autocapitalize="none"
             enterkeyhint="search"
-            style="padding-right: 71px;"
+            aria-label="Search"
+            disabled
           />
         </label>
-        {/* </div> */}
+          <span class="text-error">Dev mode — build to enable search</span>
       </fieldset>
     ) : (
       <div>
