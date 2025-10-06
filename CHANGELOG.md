@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.2.0] - 2025-10-06
+
+### Features
+- Added Pagefind static search integration — build generates `dist/_pagefind` index.
+- Per-page control: `pagefind={false}` prop for Layout to opt-out of indexing.
+- Support for excluding fragments via `data-pagefind-ignore` and files/globs via `pagefind_config.json`.
+
+### Fixes
+- CI: avoid errors when passing CLI args to `npm run build`; recommend running package `build` script or running `astro build` and `pagefind` in separate steps.
+- Accessibility: fixed label → id associations in contact form for better autofill and screen-reader support.
+
+### Documentation
+- Added `docs/search.md` with setup, exclusion examples, local checks and GitHub Actions snippets.
+- README updated with concise Pagefind summary and usage notes.
+
+### Notes
+- Ensure `dist/_pagefind` is deployed with the site.
+- If passing `--site`/`--base` in CI, run `astro build` and `pagefind` as separate steps or create dedicated npm scripts.
+
 ## [1.1.0] - 2025-01-02
 
 ### Features
