@@ -23,6 +23,11 @@
   default: true;
   prefersdark: false;
   color-scheme: light;
+
+  /* border radius */
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
 }
 
 /* Set up daisyUI dark themes 
@@ -34,6 +39,11 @@
   default: false;
   prefersdark: true;
   color-scheme: dark;
+
+  /* border radius */
+  --radius-selector: 0rem;
+  --radius-field: 0rem;
+  --radius-box: 0rem;
 }
 
 /* Add your custom CSS styles here.
@@ -148,7 +158,14 @@ svg {
   @apply will-change-[opacity,transform];
 }
 
-/* Pagefind styles */
+/**
+ * Pagefind styles
+ *
+ * These styles are used by the pagefind search bar and must be
+ * included in the global stylesheet.
+ *
+ * @see https://github.com/kriskow-web/pagefind
+ */
 :root {
   --pagefind-ui-text: color-mix(
     in oklab,
@@ -160,7 +177,7 @@ svg {
 
 .pagefind-ui__form::before {
   @apply !top-3.5;
-  @apply !mask-[url("images/search.svg")];
+  @apply !mask-[url("/images/search.svg")];
 }
 
 .pagefind-ui__search-input {
