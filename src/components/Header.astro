@@ -2,6 +2,7 @@
 import Logo from "../assets/astro.svg";
 import ThemeToggle from "../components/ThemeToggle.astro";
 import NavbarMenuItems from "./navigation/NavbarMenuItems.astro";
+import SearchModal from "./modals/SearchModal.astro";
 
 import { config } from "../consts";
 const isHome =
@@ -82,6 +83,7 @@ const isHome =
       </ul>
     </div>
     <div class="navbar-end">
+      <SearchModal />
       <ThemeToggle class="btn bth-ghost" />
     </div>
   </div>
