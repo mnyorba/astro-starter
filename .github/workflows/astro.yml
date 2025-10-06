@@ -78,9 +78,7 @@ jobs:
       - name: Build with Astro + Pagefind
         run: |
           # build with the detected runner (npx/yarn)
-          ${{ steps.detect-package-manager.outputs.runner }} astro build 
-          --site "${{ steps.pages.outputs.origin }}" 
-          --base "${{ steps.pages.outputs.base_path }}"
+          ${{ steps.detect-package-manager.outputs.runner }} astro build --site "${{ steps.pages.outputs.origin }}" --base "${{ steps.pages.outputs.base_path }}"
 
           # compute site dir (falls back to ./dist)
           SITE_DIR="./dist${{ steps.pages.outputs.base_path }}"
