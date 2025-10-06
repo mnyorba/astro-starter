@@ -69,12 +69,26 @@ jobs:
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
         working-directory: ${{ env.BUILD_PATH }}
-      - name: Build with Astro
+      # - name: Build with Astro
+        # run: |
+        #   ${{ steps.detect-package-manager.outputs.manager }} run build \
+        #   --site "${{ steps.pages.outputs.origin }}"
+        #   --base "${{ steps.pages.outputs.base_path }}"
+        #   npx pagefind --site ./dist/${{ steps.pages.outputs.base_path }} --verbose
+      - name: Build with Astro + Pagefind
         run: |
-          ${{ steps.detect-package-manager.outputs.manager }} run build \
-          --site "${{ steps.pages.outputs.origin }}"
+          # build with the detected runner (npx/yarn)
+          ${{ steps.detect-package-manager.outputs.runner }} astro build 
+          --site "${{ steps.pages.outputs.origin }}" 
           --base "${{ steps.pages.outputs.base_path }}"
-          npx pagefind --site ./dist/${{ steps.pages.outputs.base_path }} --verbose
+
+          # compute site dir (falls back to ./dist)
+          SITE_DIR="./dist${{ steps.pages.outputs.base_path }}"
+          if [ ! -d "$SITE_DIR" ]; then
+            SITE_DIR="./dist"
+          fi
+          # run pagefind against the built site
+          npx pagefind --site "$SITE_DIR" --verbose
         working-directory: ${{ env.BUILD_PATH }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
