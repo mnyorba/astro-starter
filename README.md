@@ -27,6 +27,9 @@ Perfect for blogs, portfolios, business sites, and personal projects with compre
 - **DaisyUI** - Beautiful, accessible component library
 - **Dark/Light Mode** - Automatic theme switching with user preference
 
+### Search
+- **Pagefind Integration** - Static site search powered by Pagefind — the build generates an index that must be deployed with your site.
+
 ### Content Management
 - **MDX & Markdown Support** - Write content in `.md` or `.mdx` files
 - **Content Collections** - Type-safe blog posts with frontmatter validation
@@ -189,6 +192,7 @@ Comprehensive documentation is available in the `/docs` directory:
 | **[Contact Form](./docs/contact-form.md)** | Form integration options |
 | **[Components](./docs/components.md)** | Component API and usage |
 | **[Deployment](./docs/deployment.md)** | Deployment to various platforms |
+| **[Search](./docs/search.md)** | How to configure the search functionality |
 
 ## Contributing
 
