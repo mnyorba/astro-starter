@@ -211,13 +211,12 @@ const error = Astro.url.searchParams.get("error");
             type="checkbox"
             name="consent"
             id="consent"
-            class="checkbox checkbox-primary validator"
+            class="checkbox checkbox-soft validator"
             required
           />
           <span class="label-text">
-            I agree to the <a
-              href={`${config.base}privacy/`}
-              class="link link-primary">processing of personal data</a
+            I agree to the <a href={`${config.base}privacy/`} class="link"
+              >processing of personal data</a
             > *
           </span>
           <div class="validator-hint">Required</div>
@@ -227,7 +226,7 @@ const error = Astro.url.searchParams.get("error");
 
     <!-- Submit button -->
     <div class="form-control pt-4">
-      <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+      <button type="submit" class="btn btn-soft btn-block" id="submit-btn">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -294,10 +293,10 @@ const error = Astro.url.searchParams.get("error");
         setTimeout(() => {
           demoForm.reset();
 
-          // Hide success message after 3.5 more seconds
+          // Hide success message after 0.5 more seconds
           setTimeout(() => {
             demoSuccess.style.display = "none";
-          }, 3500);
+          }, 500);
         }, 3000);
       });
     }
