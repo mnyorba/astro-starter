@@ -10,6 +10,7 @@ Welcome to the Astro Starter theme documentation. This modern template combines 
 | **[Contact Form Setup](./contact-form.md)**     | Form integration with Formspree, Netlify, EmailJS, and server-side handling |
 | **[Components Documentation](./components.md)** | Component API, props, and customization examples                            |
 | **[Deployment Guide](./deployment.md)**         | Deploy to GitHub Pages, Netlify, Vercel, and custom servers                 |
+| **[Search Setup](./search.md)**                 | How to configure the search functionality                                   |
 
 ## Quick Start
 
