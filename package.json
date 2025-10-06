@@ -16,7 +16,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site ./dist --verbose",
+    "build": "astro build && pagefind --site ./dist",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier ./src ./docs --write"
