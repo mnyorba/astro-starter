@@ -30,7 +30,7 @@
     "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.1.14",
     "astro": "^5.14.1",
-    "daisyui": "^5.1.27",
+    "daisyui": "^5.1.29",
     "pagefind": "^1.4.0",
     "remark-toc": "^9.0.0",
     "tailwindcss": "^4.1.14",
