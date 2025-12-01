@@ -173,19 +173,25 @@ svg {
     transparent
   ) !important;
   --pagefind-ui-bg: var(--color-base-100) !important;
+  --pagefind-ui-scale: 0.9 !important;
 }
 
 .pagefind-ui__form::before {
-  @apply !top-3.5;
+  @apply !top-3;
   @apply !mask-[url("/images/search.svg")];
 }
 
 .pagefind-ui__search-input {
-  @apply !input !pl-10;
-  @apply !w-full;
+  @apply !input;
+  @apply !min-w-full;
   &::placeholder {
     @apply !text-base-content;
   }
+}
+
+.pagefind-ui__button {
+  @apply !btn;
+  @apply !min-w-full;
 }
 
 .pagefind-ui__search-clear {

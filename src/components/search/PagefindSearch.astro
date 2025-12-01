@@ -10,8 +10,9 @@ const basePath = config.base || "";
     isDev ? (
       <fieldset class="fieldset">
         <legend class="sr-only">Search</legend>
-        <label class="input w-full">
-          <SearchIcon />
+        <label class="input w-full" for="search-dev">
+          <SearchIcon class="!h-3.5 !w-3.5" />
+          <span class="sr-only">Search</span>
           <input
             id="search-dev"
             type="text"
@@ -31,6 +32,23 @@ const basePath = config.base || "";
         <fieldset id="search" data-base={basePath} class="fieldset">
           <legend class="sr-only">Search</legend>
           <span id="debug-info" class="text-xs opacity-60" />
+
+          {/* <!-- Accessible fallback input shown until Pagefind UI loads --> */}
+          <label class="sr-only" for="pf-fallback">
+            Search
+          </label>
+          <input
+            id="pf-fallback"
+            class="input min-w-full !pl-10"
+            type="search"
+            name="q"
+            placeholder="Search the site"
+            title="Search"
+            autocapitalize="none"
+            enterkeyhint="search"
+            aria-label="Search"
+            aria-describedby="debug-info"
+          />
         </fieldset>
       </div>
     )
@@ -88,6 +106,45 @@ const basePath = config.base || "";
           bundlePath: `${pagefindPath}/`,
         });
         debugEl && (debugEl.textContent = "Search initialized");
+
+        // Apply style overrides after Pagefind UI has initialized.
+        // Use setProperty with priority 'important' because pagefind-ui.css
+        // is loaded after our global CSS and may win otherwise.
+        (function applySearchOverrides() {
+          const applyOnce = (el: Element | null) => {
+            if (el instanceof HTMLElement) {
+              el.style.setProperty(
+                "padding-inline-start",
+                "2.5rem",
+                "important",
+              );
+              el.style.setProperty("padding-inline-end", "4.5rem", "important");
+              return true;
+            }
+            return false;
+          };
+
+          // Try immediate application first
+          if (
+            applyOnce(
+              document.querySelector("#search .pagefind-ui__search-input"),
+            )
+          )
+            return;
+
+          // Fallback: observe DOM for the element and apply when it appears
+          const container = document.getElementById("search") || document.body;
+          const mo = new MutationObserver((mutations, observer) => {
+            if (
+              applyOnce(
+                document.querySelector("#search .pagefind-ui__search-input"),
+              )
+            ) {
+              observer.disconnect();
+            }
+          });
+          mo.observe(container, { childList: true, subtree: true });
+        })();
       };
       script.onerror = () =>
         debugEl && (debugEl.textContent = "Failed to load pagefind-ui.js");
@@ -103,4 +160,9 @@ const basePath = config.base || "";
       }
     }
   });
+
+  const el = document.querySelector("#search .pagefind-ui__search-input");
+  if (el instanceof HTMLElement) {
+    el.style.paddingInlineStart = "2.5rem !important";
+  }
 </script>
