@@ -5,7 +5,7 @@ draft: false
 description: |
   A comprehensive Markdown article with many sections and subsections for testing Table of Contents (TOC) rendering and anchor navigation in Astro.
 image:
-  src: /images/blog/image-blog-6.jpg
+  src: /images/blog/image-blog-5.webp
   alt: A stack of books and a glowing lamp on a desk
 category:
   - Markdown
@@ -100,7 +100,7 @@ _Italic text_
 
 [Astro Official Site](https://astro.build)
 
-![Astro Logo](./images/blog/image-blog-5.jpg "Astro Logo Example")
+![Data Visualization](./images/blog/image-blog-6.webp "Data Visualization Example")
 
 ---
 

@@ -6,7 +6,7 @@ draft: false
 description: |
   Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.
 image:
-  src: /images/blog/image-blog-5.jpg
+  src: /images/blog/image-blog-1.webp
   alt: A bright pink sheet of paper used to wrap flowers curves in front of rich blue background
 category:
   - Markdown
@@ -53,9 +53,9 @@ Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sap
 
 ### Output
 
-<img src="./images/blog/image-blog-5.jpg" alt="blog placeholder" class=" w-2xl">
+<img src="./images/blog/image-blog-5.webp" alt="blog placeholder" class=" w-2xl">
 
-![blog placeholder](./images/blog/image-blog-5.jpg)
+![blog placeholder](./images/blog/image-blog-5.webp)
 
 ## Blockquotes
 
