@@ -7,7 +7,6 @@ import mdx from "@astrojs/mdx";
 import remarkBaseUrl from './plugins/remark-baseurl.js';
 import remarkToc from 'remark-toc';
 import sitemap from "@astrojs/sitemap";
-import partytown from "@astrojs/partytown";
 
 import { config } from './src/consts';
 
@@ -24,12 +23,7 @@ export default defineConfig({
   },
   integrations: [
     mdx(),
-    sitemap(),
-    partytown({
-      config: {
-        forward: ['dataLayer.push', 'gtag'],
-      }
-    })
+    sitemap()
   ],
   markdown: {
     remarkPlugins: [
